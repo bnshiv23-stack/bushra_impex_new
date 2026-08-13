@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getProductBySlug } from "@/data/products";
 
-// Static export compatible
-export const dynamic = "force-static";
-
-export async function GET(req: NextRequest) {
-  return new NextResponse("PDF brochure available in full catalogue.", { status: 200 });
-}
-
 
 // ponytail: find Chrome/Edge on common install paths (Windows, Linux, Mac).
 // On the actual deployment server this list should be pruned to what's available.
