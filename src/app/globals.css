@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+  --font-heading: var(--font-sora), "Sora", sans-serif;
+  --font-bebas: var(--font-bebas-neue), "Bebas Neue", sans-serif;
+
+  --color-red:        #D71920;
+  --color-red-dark:   #b0151b;
+}
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F8F8;
+  --bg-tertiary: #F0F0F0;
+  
+  --text-primary: #111111;
+  --text-secondary: #333333;
+  --text-muted: #999999;
+  --text-inverse: #FFFFFF;
+  
+  --border-color: #EBEBEB;
+  --border-secondary: #CCCCCC;
+}
+
+.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  
+  --text-primary: #F5F5F5;
+  --text-secondary: #CCCCCC;
+  --text-muted: #888888;
+  --text-inverse: #111111;
+  
+  --border-color: #2a2a2a;
+  --border-secondary: #404040;
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* Selection */
+::selection { background: #D71920; color: #fff; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: #D71920; }
+
+/* Utilities */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── TYPOGRAPHY UTILITIES ─────────────────────────── */
+.font-bebas  { font-family: var(--font-bebas); letter-spacing: 0.02em; }
+.font-sora   { font-family: var(--font-heading); }
+.font-inter  { font-family: var(--font-sans); }
+
+/* ─── LAYOUT ────────────────────────────────────────── */
+.container-site {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+@media (max-width: 1200px) {
+  .container-site { padding-left: 48px; padding-right: 48px; }
+}
+@media (max-width: 768px) {
+  .container-site { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ─── DIVIDER ───────────────────────────────────────── */
+.rule { height: 1px; background: var(--border-color); width: 100%; transition: background 0.3s; }
+
+/* ─── BUTTONS ───────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px;
+  background: #D71920; color: #fff;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid #D71920; border-radius: 0;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+.btn-primary:hover { background: #b0151b; border-color: #b0151b; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px;
+  background: transparent; color: var(--text-primary);
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--text-primary); border-radius: 0;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+.btn-outline:hover { background: var(--text-primary); color: var(--bg-primary); }
+
+.btn-outline-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px;
+  background: transparent; color: #fff;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.4); border-radius: 0;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+.btn-outline-white:hover { background: #fff; color: #111; border-color: #fff; }
+
+/* ─── SECTION LABELS ────────────────────────────────── */
+.label {
+  font-family: var(--font-sans);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: #D71920;
+}
+
+/* ─── PRODUCT CARD ──────────────────────────────────── */
+.product-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s;
+}
+.product-card:hover { border-color: #D71920; }
+
+/* ─── NAV ───────────────────────────────────────────── */
+.nav-link {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-primary);
+  transition: color 0.3s; padding-bottom: 2px; border-bottom: 1px solid transparent;
+}
+.nav-link:hover, .nav-link.active { color: #D71920; border-bottom-color: #D71920; }
+.nav-link-white {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #fff;
+  transition: color 0.3s; padding-bottom: 2px; border-bottom: 1px solid transparent;
+}
+.nav-link-white:hover { color: #D71920; }
+
+/* ─── COMPANY PROFILE PRINT / PDF EXPORT ────────────────────────── */
+@media print {
+  /* Hide EVERYTHING except the print layout */
+  body > * { display: none !important; }
+  #cp-print-layout { display: block !important; }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  #cp-print-layout {
+    display: block;
+    width: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cp-print-page {
+    width: 297mm;
+    height: 210mm;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    background: white;
+  }
+
+  .cp-print-page:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Ensure dark pages (cover, recognition, roadmap, closing) print their backgrounds */
+  .cp-print-page.dark-page {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* Force background colors to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+
+/* ─── PRODUCT BROCHURE PRINT MODE ───────────────────────────── */
+/* Applied when Puppeteer renders ?print=true in headless Chromium */
+.print-brochure-root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F8F8;
+  --bg-tertiary: #F0F0F0;
+  --text-primary: #111111;
+  --text-secondary: #333333;
+  --text-muted: #999999;
+  --border-color: #EBEBEB;
+  --border-secondary: #CCCCCC;
+  background: #fff;
+  color: #111;
+  font-family: var(--font-sans);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.pdf-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pdf-page-break {
+  break-before: page;
+  page-break-before: always;
+}
+
+@media print {
+  /* Product brochure print mode — allow brochure root to show */
+  body:has(.print-brochure-root) > * { display: none !important; }
+  body:has(.print-brochure-root) .print-brochure-root { display: block !important; }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  .print-brochure-root {
+    width: 210mm;
+    margin: 0;
+    padding: 0;
+  }
+}

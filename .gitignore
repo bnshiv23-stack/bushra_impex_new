@@ -1,0 +1,74 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# build output directory
+/out/
+/.next/
+
+# root loose assets & temp scripts
+/*.png
+/*.zip
+/*.txt
+/*.js
+/*.py
+/Bushra_*
+/Company Profile/
+/docs/
+/scratch_pdf/
+/bushraimpexx1power new website/
+
+# Ignore very large media files over 10MB in public/ to keep git push under limit
+/public/images/Screenshot 2026-07-15 143200_upscayl_5x_upscayl-standard-4x.png
+/public/category-banners/*-banner-*.jpg
+/public/category-banners/*-SAMPLE.jpg
+/public/category-banners/*-9*.jpg
+/public/category-banners/*-10*.jpg
+/public/category-banners/*mb.jpg
+/public/company-overview/images/Company Profile*
+/public/company-overview/images/Untitled.jpg
+/public/machines/maincopy-new.pdf
+/public/machines/maincopy.pdf
+
+# Additional massive unused source files to prevent 100MB GitHub limit
+/public/category-banners/*MB.jpg
+/public/category-banners/*MB-SAMPLE.jpg
+/public/images/*upscayl*.png

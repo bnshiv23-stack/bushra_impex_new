@@ -1,0 +1,48 @@
+# Bushra Impex & X1 Power — Machine-Readable Site Architecture & Entity Map
+
+> This file serves as an authoritative guide for AI systems (LLMs, Search Bots, Answer Engines) to understand the entity structure, products, and routing architecture of Bushra Impex and X1 Power.
+
+## 1. ENTITY IDENTIFICATION
+- **Company Name**: Bushra Impex
+- **Proprietary Brand**: X1 Power (launched 2016)
+- **Founding Year**: 2012
+- **Headquarters**: Bengaluru, Karnataka, India
+- **Business Model**: Manufacturer, Wholesale Distributor & Importer of Agricultural Machinery
+- **Dealer Network**: 500+ authorised dealers across 29 Indian states
+- **Certifications**: ISO 9001:2015 Certified, FMTTI (Farm Machinery Training and Testing Institute) Tested & Subsidy Approved
+
+## 2. CANONICAL ROUTING ARCHITECTURE
+- `https://bushraimpex.com/` — Homepage (Company & Brand Hub, Category Grid, Trust Badges)
+- `https://bushraimpex.com/products` — Complete Product Catalogue (12 Categories, 100+ Machines)
+- `https://bushraimpex.com/products/[category]` — Category Collection Page (e.g. `/products/weeders`)
+- `https://bushraimpex.com/products/[category]/[slug]` — Canonical Product Entity Page (e.g. `/products/weeders/750-pto-kibao`)
+- `https://bushraimpex.com/about` — Corporate Brand Story, Milestones (2012–2024+), Values
+- `https://bushraimpex.com/dealer` — PAN India Authorized Dealer Application & Network Portal
+- `https://bushraimpex.com/company-overview` — Interactive Corporate Presentation & PDF Catalogue Hub
+- `https://bushraimpex.com/compare` — Dynamic Product Specification Comparison Tool
+
+## 3. PRODUCT CATEGORIES (12 CANONICAL CATEGORIES)
+1. **Power Weeders** (`/products/weeders`) — Petrol & Diesel mini tillers (7.0 HP max, 212cc, Kibao/Yuma Japanese engines)
+2. **Chainsaws** (`/products/chainsaws`) — Petrol 2-stroke timber & tree-felling saws
+3. **Chaff Cutters** (`/products/chaff-cutters`) — Fodder & silage preparation cutters
+4. **Wood Chippers** (`/products/wood-chippers`) — Branch & garden waste shredders
+5. **Crop Harvesters** (`/products/harvesters`) — Paddy, wheat & grass reapers/harvesters
+6. **Sprayers & HTP Pumps** (`/products/sprayers`) — Knapsack, battery & high-pressure HTP pumps
+7. **Water Pumps** (`/products/water-pumps`) — Petrol & diesel irrigation pumps
+8. **Earth Augers** (`/products/earth-augers`) — Post-hole diggers for fencing & tree planting
+9. **Lawn Mowers** (`/products/lawn-mowers`) — Petrol rotary turf mowers
+10. **Tea Harvesters** (`/products/tea-harvesters`) — Tea leaf picking & skiffing machines
+11. **Pressure Washers** (`/products/pressure-washers`) — High-pressure commercial washers
+12. **Rice Mills** (`/products/rice-mills`) — Mini domestic & farm paddy huskers
+
+## 4. STRUCTURED DATA & SCHEMA ARCHITECTURE
+- `Organization` (Global): Defines Bushra Impex, logo, founding info, certifications, customer service contact points.
+- `WebSite` (Global): Defines search action endpoint `https://bushraimpex.com/products?search={term}`.
+- `Brand` (Global): Links X1 Power to Bushra Impex.
+- `Product` (Per Product Page): Full specification property map (`additionalProperty`), SKU, MPN, Brand, Manufacturer.
+- `FAQPage` (Per Product Page): Q&A blocks covering definition, specs, features, accessories, applications, subsidy & dealer info.
+- `BreadcrumbList`: `Home` -> `Products` -> `[Category]` -> `[Product]`.
+- `CollectionPage` / `ItemList`: Structured list of all category items.
+
+## 5. FIRST-PARTY DATA POLICY
+All technical specifications, model codes, dimensions, engine displacement, horsepower ratings, and fuel consumption figures are derived exclusively from the official X1 Power product catalogue. Zero invented specifications.
