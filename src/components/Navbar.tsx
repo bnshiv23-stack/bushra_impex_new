@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* ── DESKTOP NAV ───────────────────────────────── */}
+        {/* â”€â”€ DESKTOP NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
           {NAV_LINKS.map((l) => (
             <Link
@@ -71,7 +71,7 @@ export default function Navbar() {
                   className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-color)] text-[10px] font-bold uppercase tracking-widest text-[#D71920] hover:bg-[var(--bg-secondary)] transition-colors"
                 >
                   <span>View All Products</span>
-                  <span>→</span>
+                  <span>â†’</span>
                 </Link>
                 <div className="grid grid-cols-2 p-2">
                   {CATEGORIES.map((cat) => (
@@ -91,7 +91,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* ── RIGHT CTA ─────────────────────────────────── */}
+        {/* â”€â”€ RIGHT CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="hidden xl:flex items-center gap-4 2xl:gap-5">
           <ThemeToggle />
           <a
@@ -110,7 +110,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* ── MOBILE / TABLET TOGGLE ─────────────────────── */}
+        {/* â”€â”€ MOBILE / TABLET TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="xl:hidden flex items-center gap-3">
           <button
             className="p-2 text-[var(--text-primary)]"
@@ -124,7 +124,7 @@ export default function Navbar() {
 
     </header>
 
-      {/* ── MOBILE MENU: BACKDROP ──────────────────────── */}
+      {/* â”€â”€ MOBILE MENU: BACKDROP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {mobileOpen && (
         <div
           onClick={() => setMobileOpen(false)}
@@ -137,7 +137,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* ── MOBILE MENU: SLIDE-IN DRAWER ──────────────── */}
+      {/* â”€â”€ MOBILE MENU: SLIDE-IN DRAWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         style={{
           position: "fixed",
@@ -288,7 +288,7 @@ export default function Navbar() {
               <Phone style={{ width: 14, height: 14 }} /> Call Us
             </a>
             <a
-              href="/maincopy.pdf"
+              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
               download
               style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, border: "1px solid var(--border-color)", color: "var(--text-primary)", padding: "14px 8px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", textDecoration: "none", borderRadius: 4, background: "transparent" }}
             >
@@ -299,7 +299,7 @@ export default function Navbar() {
 
         </div> {/* End of Scrollable Container */}
 
-        {/* ── THE PEEKING MASCOT (commented out — uncomment to restore) ──
+        {/* â”€â”€ THE PEEKING MASCOT (commented out â€” uncomment to restore) â”€â”€
         <div style={{
           position: "absolute",
           bottom: -15,
@@ -320,10 +320,11 @@ export default function Navbar() {
             unoptimized
           />
         </div>
-        ── END MASCOT */}
+        â”€â”€ END MASCOT */}
 
 
       </div>
     </>
   );
 }
+

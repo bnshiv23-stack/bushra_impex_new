@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import type { ChatMessage } from "@/lib/chatbot-engine";
 import type { Product } from "@/data/products";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ── Markdown: bold + tables ───────────────────────────────────────────────────
+// â”€â”€ Markdown: bold + tables â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Md({ text }: { text: string }) {
   const lines = text.split("\n");
   const out: React.ReactNode[] = [];
@@ -63,7 +63,7 @@ function Md({ text }: { text: string }) {
   return <>{out}</>;
 }
 
-// ── Product Card ──────────────────────────────────────────────────────────────
+// â”€â”€ Product Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ProductCard({ p }: { p: Product }) {
   return (
     <div className="flex-shrink-0 w-44 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors overflow-hidden group">
@@ -98,10 +98,10 @@ function ProductCard({ p }: { p: Product }) {
   );
 }
 
-// ── Input field shared style ──────────────────────────────────────────────────
+// â”€â”€ Input field shared style â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const fieldCls = "w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2 text-[12px] text-white placeholder-white/35 focus:outline-none focus:border-white/40 transition-colors";
 
-// ── Forms ─────────────────────────────────────────────────────────────────────
+// â”€â”€ Forms â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | "catalogue"; onDone: (msg: string) => void }) {
   const [d, setD] = useState({ name: "", phone: "", state: "", product: "", qty: "1", message: "", bizName: "", location: "", exp: "", slot: "Anytime" });
   const [done, setDone] = useState(false);
@@ -114,7 +114,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
     let body = "";
     if (type === "enquiry") body = `*Product Enquiry*\nName: ${d.name}\nPhone: ${d.phone}\nState: ${d.state}\nProduct: ${d.product || "General"}\nQty: ${d.qty}\nMessage: ${d.message}`;
     else if (type === "callback") body = `*Callback Request*\nName: ${d.name}\nPhone: ${d.phone}\nBest time: ${d.slot}`;
-    else if (type === "dealer") body = `*Dealer Application*\nBusiness: ${d.bizName}\nLocation: ${d.location}\nExperience: ${d.exp} yrs\nContact: ${d.name} — ${d.phone}`;
+    else if (type === "dealer") body = `*Dealer Application*\nBusiness: ${d.bizName}\nLocation: ${d.location}\nExperience: ${d.exp} yrs\nContact: ${d.name} â€” ${d.phone}`;
     if (body) window.open(`https://wa.me/917624869606?text=${encodeURIComponent(body)}`, "_blank");
     setDone(true);
     onDone("Submitted! Our team will reach out shortly via WhatsApp.");
@@ -123,14 +123,14 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
   if (type === "catalogue") {
     return (
       <div className="mt-2 space-y-1.5 bg-white/5 rounded-xl border border-white/10 p-3">
-        <a href="/maincopy.pdf" download className="flex items-center justify-between rounded-lg border border-white/10 px-3 py-2 text-[12px] text-white/80 hover:bg-white/10 hover:text-white transition-colors">
-          <span>X1 Power Full Catalogue</span><span className="text-white/40 text-[10px]">PDF ↓</span>
+        <a href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border border-white/10 px-3 py-2 text-[12px] text-white/80 hover:bg-white/10 hover:text-white transition-colors">
+          <span>X1 Power Full Catalogue</span><span className="text-white/40 text-[10px]">PDF â†“</span>
         </a>
         <Link href="/company-overview" className="flex items-center justify-between rounded-lg border border-white/10 px-3 py-2 text-[12px] text-white/80 hover:bg-white/10 hover:text-white transition-colors">
-          <span>Company Profile</span><span className="text-white/40 text-[10px]">View →</span>
+          <span>Company Profile</span><span className="text-white/40 text-[10px]">View â†’</span>
         </Link>
         <button onClick={() => onDone("Please share price list and subsidy details")} className="flex items-center justify-between w-full rounded-lg border border-white/10 px-3 py-2 text-[12px] text-white/80 hover:bg-white/10 hover:text-white transition-colors text-left">
-          <span>Request Price List</span><span className="text-white/40 text-[10px]">Request →</span>
+          <span>Request Price List</span><span className="text-white/40 text-[10px]">Request â†’</span>
         </button>
       </div>
     );
@@ -138,7 +138,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
 
   if (done) return (
     <p className="mt-2 text-[12px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-3 py-2">
-      Submitted — our team will contact you on WhatsApp shortly.
+      Submitted â€” our team will contact you on WhatsApp shortly.
     </p>
   );
 
@@ -166,7 +166,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
       )}
       {type === "callback" && (
         <select value={d.slot} onChange={set("slot")} className={fieldCls}>
-          {["Anytime", "Morning (9–12 AM)", "Afternoon (12–4 PM)", "Evening (4–7 PM)"].map((s) => (
+          {["Anytime", "Morning (9â€“12 AM)", "Afternoon (12â€“4 PM)", "Evening (4â€“7 PM)"].map((s) => (
             <option key={s} value={s} className="bg-[#0f172a]">{s}</option>
           ))}
         </select>
@@ -180,7 +180,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
   );
 }
 
-// ── Message Bubble ────────────────────────────────────────────────────────────
+// â”€â”€ Message Bubble â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Bubble({ msg, onAction }: { msg: ChatMessage; onAction: (t: string) => void }) {
   const isUser = msg.role === "user";
   return (
@@ -222,7 +222,7 @@ function Bubble({ msg, onAction }: { msg: ChatMessage; onAction: (t: string) => 
   );
 }
 
-// ── Typing Indicator ──────────────────────────────────────────────────────────
+// â”€â”€ Typing Indicator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Typing() {
   return (
     <div className="flex gap-2.5">
@@ -236,7 +236,7 @@ function Typing() {
   );
 }
 
-// ── Welcome message ───────────────────────────────────────────────────────────
+// â”€â”€ Welcome message â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const WELCOME: ChatMessage = {
   role: "assistant",
   content: "Welcome to Bushra Impex / X1 Power. How can I help you today?",
@@ -247,7 +247,7 @@ const WELCOME: ChatMessage = {
   ],
 };
 
-// ── Quick nav pills (always visible above input) ──────────────────────────────
+// â”€â”€ Quick nav pills (always visible above input) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const QUICK_PILLS = ["Enquiry", "Callback", "Dealer", "Catalogue"];
 const PILL_MAP: Record<string, string> = {
   Enquiry: "Submit Enquiry",
@@ -256,7 +256,7 @@ const PILL_MAP: Record<string, string> = {
   Catalogue: "Catalogue Downloads",
 };
 
-// ── Main Component ────────────────────────────────────────────────────────────
+// â”€â”€ Main Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function DraggableWidgets() {
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<ChatMessage[]>([WELCOME]);
@@ -281,7 +281,7 @@ export default function DraggableWidgets() {
 
   return (
     <>
-      {/* ── Launcher strip ── */}
+      {/* â”€â”€ Launcher strip â”€â”€ */}
       <motion.div drag dragMomentum={false}
         className="fixed bottom-6 right-6 z-[999] flex flex-col gap-2.5 items-center bg-[var(--bg-primary)]/30 backdrop-blur-md border border-[var(--border-color)] p-2 rounded-2xl shadow-xl cursor-grab active:cursor-grabbing">
         {/* drag handle */}
@@ -324,7 +324,7 @@ export default function DraggableWidgets() {
         </button>
       </motion.div>
 
-      {/* ── Chat window ── */}
+      {/* â”€â”€ Chat window â”€â”€ */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -356,7 +356,7 @@ export default function DraggableWidgets() {
                 onClick={() => setOpen(false)}
                 className="w-7 h-7 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors text-[13px]"
                 aria-label="Close">
-                ✕
+                âœ•
               </button>
             </div>
 
@@ -384,7 +384,7 @@ export default function DraggableWidgets() {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Search products or ask a question…"
+                placeholder="Search products or ask a questionâ€¦"
                 className="flex-1 bg-white/6 border border-white/12 rounded-xl px-3.5 py-2 text-[13px] text-white placeholder-white/35 focus:outline-none focus:border-white/30 transition-colors"
               />
               <button type="submit" disabled={!input.trim()}
@@ -400,3 +400,4 @@ export default function DraggableWidgets() {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { PRODUCTS, CATEGORIES } from "@/data/products";
 import { ArrowRight, ChevronLeft, ChevronRight, Download, Phone } from "lucide-react";
 
-// ── Static data ───────────────────────────────────────────────
+// â”€â”€ Static data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TRUST_METRICS = [
   { num: "100+", label: "Products" },
   { num: "500+", label: "Dealers" },
@@ -46,7 +46,7 @@ function scrollBy(ref: React.RefObject<HTMLDivElement | null>, dir: "left" | "ri
   ref.current?.scrollBy({ left: dir === "left" ? -340 : 340, behavior: "smooth" });
 }
 
-// ── Reusable section label ─────────────────────────────────────
+// â”€â”€ Reusable section label â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Label({ children }: { children: React.ReactNode }) {
   return (
     <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#D71920] mb-3">
@@ -55,7 +55,7 @@ function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Section heading ────────────────────────────────────────────
+// â”€â”€ Section heading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function SectionHead({ label, heading, align = "left" }: { label: string; heading: React.ReactNode; align?: "left" | "center" }) {
   return (
     <div className={`flex flex-col ${align === "center" ? "items-center text-center" : "items-start"} mb-12`}>
@@ -80,10 +80,10 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      {/* ── SEO H1 (Visually Hidden) ─────────────────────────────────── */}
+      {/* â”€â”€ SEO H1 (Visually Hidden) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <h1 className="sr-only">X1 Power by Bushra Impex - Premium Agricultural Equipment: Tillers, Weeders, Chainsaws, Chaff Cutters, Wood Chippers, Harvesters, Sprayers, Water Pumps, Earth Augers, Lawn Mowers, Pressure Washers & Rice Mills</h1>
 
-      {/* ── HERO ─────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative min-h-[85vh] sm:min-h-[90vh] lg:min-h-[92vh] flex flex-col justify-end pb-12 sm:pb-16 overflow-hidden">
         {/* Hero Background Image */}
         <Image
@@ -105,7 +105,7 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/50 text-white animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-[#D71920] animate-pulse" />
             <span className="text-[10px] sm:text-[12px] font-extrabold uppercase tracking-[0.25em] text-amber-300 drop-shadow-md">
-              10+ YEARS &nbsp;•&nbsp; 29 STATES &nbsp;•&nbsp; 1 MISSION
+              10+ YEARS &nbsp;â€¢&nbsp; 29 STATES &nbsp;â€¢&nbsp; 1 MISSION
             </span>
           </div>
 
@@ -128,7 +128,7 @@ export default function HomePage() {
               Become a Dealer
             </Link>
             <a
-              href="/x1power_catalogue.pdf" download
+              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
               className="px-6 sm:px-7 py-3 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/25 transition-all"
             >
               Download Catalogue
@@ -138,7 +138,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TRUST STRIP ──────────────────────────────────────── */}
+      {/* â”€â”€ TRUST STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
         <div className="container-site">
           <div className="grid grid-cols-3 md:grid-cols-6">
@@ -155,7 +155,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED PRODUCTS ────────────────────────────────── */}
+      {/* â”€â”€ FEATURED PRODUCTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-primary)]">
         <div className="container-site">
           <div className="flex items-end justify-between mb-12 border-b border-[var(--border-color)] pb-5">
@@ -243,7 +243,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CATEGORY GRID ────────────────────────────────────── */}
+      {/* â”€â”€ CATEGORY GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
         <div className="container-site">
           <div className="flex items-end justify-between border-b border-[var(--border-color)] pb-5 mb-12">
@@ -283,7 +283,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── WHY X1 POWER ─────────────────────────────────────── */}
+      {/* â”€â”€ WHY X1 POWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
         <div className="container-site">
           <SectionHead label="Core Strengths" heading="Why Indian Farmers Choose X1 Power" align="center" />
@@ -299,7 +299,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── BEST SELLERS CAROUSEL ────────────────────────────── */}
+      {/* â”€â”€ BEST SELLERS CAROUSEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-secondary)] border-t border-[var(--border-color)] overflow-hidden">
         <div className="container-site">
           <div className="flex items-end justify-between mb-10">
@@ -343,7 +343,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── DEALER NETWORK ───────────────────────────────────── */}
+      {/* â”€â”€ DEALER NETWORK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-[var(--bg-primary)] border-t border-[var(--border-color)] py-16 sm:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[var(--border-color)]">
@@ -380,7 +380,7 @@ export default function HomePage() {
                 { year: "2012", event: "Company Established in Bengaluru" },
                 { year: "2017", event: "Launched X1 Power Brand" },
                 { year: "2021", event: "FMTTI Testing & Approvals Secured" },
-                { year: "2024", event: "PAN India Dealer Network — 500+ Strong" },
+                { year: "2024", event: "PAN India Dealer Network â€” 500+ Strong" },
               ].map((m) => (
                 <div key={m.year} className="flex items-baseline gap-3">
                   <span className="font-bebas text-[13px] text-[#D71920] tracking-widest w-10 shrink-0">{m.year}</span>
@@ -397,7 +397,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+      {/* â”€â”€ TESTIMONIALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
         <div className="container-site">
           <SectionHead label="Farmer Voices" heading="What Our Customers Say" align="center" />
@@ -407,7 +407,7 @@ export default function HomePage() {
                 <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">"{t.text}"</p>
                 <div className="border-t border-[var(--border-color)] pt-5">
                   <span className="block font-bold text-[13px] text-[var(--text-primary)]">{t.name}</span>
-                  <span className="block text-[10px] text-[var(--text-muted)] uppercase tracking-wider mt-0.5">{t.location} · {t.crop}</span>
+                  <span className="block text-[10px] text-[var(--text-muted)] uppercase tracking-wider mt-0.5">{t.location} Â· {t.crop}</span>
                 </div>
               </div>
             ))}
@@ -415,7 +415,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── LATEST PRODUCTS ───────────────────────────────────── */}
+      {/* â”€â”€ LATEST PRODUCTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-primary)] border-t border-[var(--border-color)] overflow-hidden">
         <div className="container-site">
           <div className="flex items-end justify-between mb-10">
@@ -458,7 +458,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── ACCESSORIES ──────────────────────────────────────── */}
+      {/* â”€â”€ ACCESSORIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
         <div className="container-site">
           <SectionHead label="Enhance Capability" heading="Compatible Attachments" align="center" />
@@ -478,7 +478,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CORPORATE OVERVIEW / ENTITY PROFILE ──────────────── */}
+      {/* â”€â”€ CORPORATE OVERVIEW / ENTITY PROFILE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
         <div className="container-site grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -511,7 +511,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ────────────────────────────────────────── */}
+      {/* â”€â”€ FINAL CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-[#111111] text-white border-t border-neutral-900 py-20">
         <div className="container-site flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="flex flex-col gap-4 max-w-xl">
@@ -520,7 +520,7 @@ export default function HomePage() {
               Talk to Our Product Experts
             </h2>
             <p className="text-[13px] text-neutral-400 leading-relaxed">
-              Download catalogue sheets, request specific specs, or find a dealer near you — we are here to help.
+              Download catalogue sheets, request specific specs, or find a dealer near you â€” we are here to help.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
@@ -532,7 +532,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 border border-neutral-700 text-white font-bold uppercase tracking-widest text-[11px] px-7 py-3.5 hover:border-white transition-colors">
               <Phone className="w-3.5 h-3.5" /> Call Now
             </a>
-            <a href="/maincopy.pdf" download
+            <a href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-neutral-700 text-white font-bold uppercase tracking-widest text-[11px] px-7 py-3.5 hover:border-white transition-colors">
               <Download className="w-3.5 h-3.5" /> Catalogue
             </a>
@@ -544,3 +544,4 @@ export default function HomePage() {
     </>
   );
 }
+

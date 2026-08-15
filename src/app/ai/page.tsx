@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import { respond } from "@/lib/chatbot-engine";
 import type { ChatMessage } from "@/lib/chatbot-engine";
 import type { Product } from "@/data/products";
 
-// ── Markdown ──────────────────────────────────────────────────────────────────
+// â”€â”€ Markdown â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Md({ text }: { text: string }) {
   const lines = text.split("\n");
   const out: React.ReactNode[] = [];
@@ -57,7 +57,7 @@ function Md({ text }: { text: string }) {
   return <>{out}</>;
 }
 
-// ── Product Card ──────────────────────────────────────────────────────────────
+// â”€â”€ Product Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ProductCard({ p }: { p: Product }) {
   return (
     <div className="flex-shrink-0 w-52 border border-[var(--border-color)] hover:border-[#D71920] transition-colors group overflow-hidden">
@@ -87,10 +87,10 @@ function ProductCard({ p }: { p: Product }) {
   );
 }
 
-// ── Field style ───────────────────────────────────────────────────────────────
+// â”€â”€ Field style â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const fCls = "w-full border border-[var(--border-color)] bg-[var(--bg-secondary)] px-3 py-2 text-[13px] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--text-primary)] transition-colors rounded";
 
-// ── Inline Form ───────────────────────────────────────────────────────────────
+// â”€â”€ Inline Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | "catalogue"; onDone: (msg: string) => void }) {
   const [d, setD] = useState({ name: "", phone: "", state: "", product: "", qty: "1", message: "", bizName: "", location: "", exp: "", slot: "Anytime" });
   const [done, setDone] = useState(false);
@@ -102,7 +102,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
     let body = "";
     if (type === "enquiry") body = `*Product Enquiry*\nName: ${d.name}\nPhone: ${d.phone}\nState: ${d.state}\nProduct: ${d.product || "General"}\nQty: ${d.qty}\nMessage: ${d.message}`;
     else if (type === "callback") body = `*Callback Request*\nName: ${d.name}\nPhone: ${d.phone}\nBest time: ${d.slot}`;
-    else if (type === "dealer") body = `*Dealer Application*\nBusiness: ${d.bizName}\nLocation: ${d.location}\nExperience: ${d.exp} yrs\nContact: ${d.name} — ${d.phone}`;
+    else if (type === "dealer") body = `*Dealer Application*\nBusiness: ${d.bizName}\nLocation: ${d.location}\nExperience: ${d.exp} yrs\nContact: ${d.name} â€” ${d.phone}`;
     if (body) window.open(`https://wa.me/917624869606?text=${encodeURIComponent(body)}`, "_blank");
     setDone(true);
     onDone("Submitted! Our team will reach out via WhatsApp shortly.");
@@ -111,20 +111,20 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
   if (type === "catalogue") {
     return (
       <div className="mt-3 border border-[var(--border-color)] space-y-px">
-        <a href="/maincopy.pdf" download className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors">
-          <span>X1 Power Full Catalogue</span><span className="text-[var(--text-muted)] text-[11px]">PDF ↓</span>
+        <a href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors">
+          <span>X1 Power Full Catalogue</span><span className="text-[var(--text-muted)] text-[11px]">PDF â†“</span>
         </a>
         <Link href="/company-overview" className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors border-t border-[var(--border-color)]">
-          <span>Company Profile</span><span className="text-[var(--text-muted)] text-[11px]">View →</span>
+          <span>Company Profile</span><span className="text-[var(--text-muted)] text-[11px]">View â†’</span>
         </Link>
         <button onClick={() => onDone("Please share price list and subsidy details")} className="flex items-center justify-between w-full px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors border-t border-[var(--border-color)] text-left">
-          <span>Request Price List</span><span className="text-[var(--text-muted)] text-[11px]">Request →</span>
+          <span>Request Price List</span><span className="text-[var(--text-muted)] text-[11px]">Request â†’</span>
         </button>
       </div>
     );
   }
 
-  if (done) return <p className="mt-3 text-[13px] text-emerald-600 dark:text-emerald-400">Submitted — our team will contact you on WhatsApp shortly.</p>;
+  if (done) return <p className="mt-3 text-[13px] text-emerald-600 dark:text-emerald-400">Submitted â€” our team will contact you on WhatsApp shortly.</p>;
 
   return (
     <form onSubmit={submit} className="mt-3 space-y-2 border border-[var(--border-color)] p-4">
@@ -148,7 +148,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
       )}
       {type === "callback" && (
         <select value={d.slot} onChange={set("slot")} className={fCls}>
-          {["Anytime", "Morning (9–12 AM)", "Afternoon (12–4 PM)", "Evening (4–7 PM)"].map((s) => (
+          {["Anytime", "Morning (9â€“12 AM)", "Afternoon (12â€“4 PM)", "Evening (4â€“7 PM)"].map((s) => (
             <option key={s} value={s}>{s}</option>
           ))}
         </select>
@@ -162,7 +162,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
   );
 }
 
-// ── Pair ──────────────────────────────────────────────────────────────────────
+// â”€â”€ Pair â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Pair { q: string; a: ChatMessage | null }
 
 const SUGGESTIONS = [
@@ -197,10 +197,10 @@ export default function AIPage() {
       {/* Top bar */}
       <header className="fixed top-0 inset-x-0 z-50 h-12 border-b border-[var(--border-color)] bg-[var(--bg-primary)] flex items-center px-6">
         <Link href="/" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
-          ← Back
+          â† Back
         </Link>
         <span className="mx-auto text-[11px] font-bold uppercase tracking-widest text-[var(--text-primary)]">
-          X1 Power · Product Assistant
+          X1 Power Â· Product Assistant
         </span>
         <Link href="/contact" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[#D71920] transition-colors">
           Contact
@@ -281,17 +281,18 @@ export default function AIPage() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Search products, ask about specs, enquire…"
+            placeholder="Search products, ask about specs, enquireâ€¦"
             disabled={busy}
             autoFocus
             className="flex-1 bg-transparent border-b border-[var(--border-color)] focus:border-[var(--text-primary)] pb-2 text-[14px] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors"
           />
           <button type="submit" disabled={!input.trim() || busy}
             className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--text-primary)] disabled:opacity-30 transition-colors pb-2 flex-shrink-0">
-            Send →
+            Send â†’
           </button>
         </form>
       </div>
     </div>
   );
 }
+
