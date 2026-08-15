@@ -5,3 +5,5 @@ compatibility_date = "2025-01-01"
 # Cloudflare Browser Rendering — enables @cloudflare/puppeteer in Pages Functions
 [browser]
 binding = "BROWSER"
+
+compatibility_flags = [ "nodejs_compat" ]
