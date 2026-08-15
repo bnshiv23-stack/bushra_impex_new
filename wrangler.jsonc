@@ -1,12 +1,17 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
   "name": "bushra-impex-new",
   "compatibility_date": "2026-08-15",
   "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
   },
   "browser": {
     "binding": "BROWSER"
+  },
+  "observability": {
+    "enabled": true
   }
 }
