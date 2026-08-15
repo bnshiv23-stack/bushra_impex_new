@@ -72,3 +72,6 @@ next-env.d.ts
 /public/category-banners/*MB.jpg
 /public/category-banners/*MB-SAMPLE.jpg
 /public/images/*upscayl*.png
+
+# OpenNext build output
+/.open-next/
