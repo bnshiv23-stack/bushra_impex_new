@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -188,24 +188,37 @@ export default function ProductDetailClient({
     if (!product) return;
     setIsGeneratingPDF(true);
     try {
-      const res = await fetch(`/api/pdf/product?slug=${product.slug}`);
-      if (!res.ok) {
-        const msg = await res.text();
-        alert("PDF generation failed: " + msg);
+      const res = await fetch(`/api/pdf/product?slug=${product.slug}&category=${product.category}`);
+      const contentType = res.headers.get("content-type") || "";
+
+      // If we got a valid PDF back from Cloudflare Pages Function
+      if (res.ok && contentType.includes("application/pdf")) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
         return;
       }
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+
+      // If in local dev mode or on server without BROWSER binding, fallback to opening print view
+      const printUrl = `/products/${product.category}/${product.slug}?print=true`;
+      const printWin = window.open(printUrl, "_blank");
+      if (printWin) {
+        printWin.addEventListener("load", () => {
+          setTimeout(() => {
+            printWin.print();
+          }, 600);
+        });
+      }
     } catch (err) {
       console.error(err);
-      alert("Could not generate PDF. Please try again.");
+      const printUrl = `/products/${product.category}/${product.slug}?print=true`;
+      window.open(printUrl, "_blank");
     } finally {
       setIsGeneratingPDF(false);
     }

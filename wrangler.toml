@@ -1,0 +1,7 @@
+﻿name = "x1power-website"
+pages_build_output_dir = "out"
+compatibility_date = "2025-01-01"
+
+# Cloudflare Browser Rendering — enables @cloudflare/puppeteer in Pages Functions
+[browser]
+binding = "BROWSER"
