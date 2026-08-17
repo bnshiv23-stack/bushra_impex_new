@@ -348,17 +348,51 @@ export default function ImageZoom({ imageUrl, alt, fuelBadge }: ImageZoomProps) 
           </svg>
         </button>
 
-        {/* Touch hint — tiny, non-intrusive, only on touch devices */}
-        {!hasHover && (
-          <div style={{
-            position: "absolute", bottom: 8, right: 10,
-            fontSize: 9, fontWeight: 700, textTransform: "uppercase",
-            letterSpacing: "0.1em", color: "rgba(0,0,0,0.32)",
-            pointerEvents: "none",
-          }}>
-            Hold to zoom
-          </div>
+        {/* ── Desktop expand button (top right) ── */}
+        {hasHover && (
+          <button
+            onClick={() => setModalOpen(true)}
+            onMouseEnter={() => setIconHovered(true)}
+            onMouseLeave={() => setIconHovered(false)}
+            title="Click to expand fullscreen"
+            aria-label="Click to expand fullscreen"
+            style={{
+              position: "absolute", top: 12, right: 12,
+              background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: "50%", width: 34, height: 34,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", backdropFilter: "blur(4px)",
+              transition: "transform 0.15s, background 0.15s",
+              transform: iconHovered ? "scale(1.12)" : "scale(1)",
+              zIndex: 12,
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="rgba(255,255,255,0.9)" strokeWidth="2.2" strokeLinecap="round">
+              <polyline points="15 3 21 3 21 9"/>
+              <polyline points="9 21 3 21 3 15"/>
+              <line x1="21" y1="3" x2="14" y2="10"/>
+              <line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+          </button>
         )}
+      </div>
+
+      {/* ── Explicit Mobile / Tablet Tap to Zoom Button ── */}
+      <div className="mt-3 flex items-center justify-center">
+        <button
+          type="button"
+          onClick={() => setModalOpen(true)}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-secondary)] hover:bg-[#D71920] hover:text-white border border-[var(--border-color)] text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)] transition-all shadow-sm active:scale-95"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          Click / Tap to Zoom
+        </button>
       </div>
 
       {/* ── DESKTOP SIDE PANEL ─────────────────────────────── */}
@@ -381,90 +415,97 @@ export default function ImageZoom({ imageUrl, alt, fuelBadge }: ImageZoomProps) 
         />
       )}
 
-      {/* ── TOUCH LONG-PRESS ZOOM PANEL ─────────────────────── */}
-      {zoomActive && !hasHover && (
-        <div style={{
-          position: "fixed",
-          top: clamp(panelPos.top - (PANEL_SIZE * 0.7) / 2 - 60, 16, window.innerHeight - (PANEL_SIZE * 0.7) - 16),
-          left: clamp(panelPos.left, 16, window.innerWidth  - (PANEL_SIZE * 0.7) - 16),
-          width: PANEL_SIZE * 0.7, height: PANEL_SIZE * 0.7,
-          zIndex: 9000, borderRadius: 16,
-          border: "2px solid rgba(0,0,0,0.12)",
-          boxShadow: "0 12px 48px rgba(0,0,0,0.3)",
-          overflow: "hidden", pointerEvents: "none",
-          backgroundColor: "var(--bg-secondary)",
-          backgroundImage: `url(${imageUrl})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: `${ZOOM_FACTOR * 100}% ${ZOOM_FACTOR * 100}%`,
-          backgroundPosition: `${bgPct.x}% ${bgPct.y}%`,
-        }} />
-      )}
-
       {/* ── FULLSCREEN MODAL ─────────────────────────────────── */}
       {modalOpen && (
         <div
           style={{
             position: "fixed", inset: 0, zIndex: 999999,
-            background: "#000",
+            background: "rgba(0,0,0,0.94)",
             display: "flex", alignItems: "center", justifyContent: "center",
             overflow: "hidden",
+            touchAction: "none",
           }}
           onWheel={handleWheel}
         >
-          {/* Close button */}
-          <button
-            onClick={() => setModalOpen(false)}
-            style={{
-              position: "absolute", top: 20, right: 20, zIndex: 10,
-              background: "rgba(255,255,255,0.12)", border: "none",
-              borderRadius: "50%", width: 44, height: 44,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", color: "#fff", transition: "background 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
-
-          {/* Scale indicator */}
+          {/* Top Bar with Safe Area Inset */}
           <div style={{
-            position: "absolute", top: 24, left: "50%", transform: "translateX(-50%)",
-            color: "rgba(255,255,255,0.4)",
-            fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em",
-            pointerEvents: "none",
+            position: "absolute", top: "calc(16px + env(safe-area-inset-top, 0px))",
+            left: 16, right: 16, zIndex: 20,
+            display: "flex", alignItems: "center", justifyContent: "space-between",
           }}>
-            {Math.round(scale * 100)}%
+            {/* Prominent High-Contrast Close Button */}
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              style={{
+                background: "#D71920", border: "none",
+                borderRadius: 999, padding: "8px 16px",
+                display: "flex", alignItems: "center", gap: 8,
+                cursor: "pointer", color: "#fff", fontSize: 13, fontWeight: 700,
+                letterSpacing: "0.05em", textTransform: "uppercase",
+                boxShadow: "0 4px 16px rgba(215,25,32,0.4)",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Close Zoom
+            </button>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {/* Scale indicator */}
+              <div style={{
+                color: "rgba(255,255,255,0.7)",
+                fontSize: 13, fontWeight: 700, letterSpacing: "0.05em",
+                background: "rgba(255,255,255,0.1)", padding: "6px 12px", borderRadius: 999,
+              }}>
+                {Math.round(scale * 100)}%
+              </div>
+
+              {/* Quick Close ✕ */}
+              <button
+                type="button"
+                onClick={() => setModalOpen(false)}
+                style={{
+                  background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.3)",
+                  borderRadius: "50%", width: 36, height: 36,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  cursor: "pointer", color: "#fff", fontSize: 16, fontWeight: 700,
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                }}
+              >✕</button>
+            </div>
           </div>
 
           {/* Device-adaptive hint */}
           <div style={{
-            position: "absolute", top: 46, left: "50%", transform: "translateX(-50%)",
-            color: "rgba(255,255,255,0.25)",
-            fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em",
-            pointerEvents: "none", whiteSpace: "nowrap",
+            position: "absolute", top: "calc(64px + env(safe-area-inset-top, 0px))", left: "50%",
+            transform: "translateX(-50%)", color: "rgba(255,255,255,0.4)",
+            fontSize: 11, fontWeight: 600, letterSpacing: "0.05em", pointerEvents: "none",
+            whiteSpace: "nowrap" as const, zIndex: 10,
           }}>
             {hasHover
-              ? "Scroll to zoom · Drag to pan · +/− · Esc"
-              : "Pinch to zoom · Drag to pan · Double-tap to reset"}
+              ? "Scroll to zoom · Drag to pan · +/− · Esc to close"
+              : "Pinch to zoom · Drag to pan · Double-tap to reset · Swipe down or tap Close"}
           </div>
 
           {/* Zoom controls (desktop) */}
-          {hasHover && (
-            <div style={{
-              position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)",
-              display: "flex", alignItems: "center", gap: 12, zIndex: 10,
-            }}>
-              <button onClick={() => setScale(s => clamp(s * 0.8, MODAL_MIN_SCALE, MODAL_MAX_SCALE))} style={btnStyle}>−</button>
-              <button onClick={() => { setScale(1); setTranslate({ x: 0, y: 0 }); }}
-                style={{ ...btnStyle, borderRadius: 10, width: "auto", padding: "0 12px", fontSize: 10, letterSpacing: "0.06em" }}>
-                RESET
-              </button>
-              <button onClick={() => setScale(s => clamp(s * 1.25, MODAL_MIN_SCALE, MODAL_MAX_SCALE))} style={btnStyle}>+</button>
-            </div>
-          )}
+          <div style={{
+            position: "absolute", bottom: "calc(20px + env(safe-area-inset-bottom, 0px))", left: "50%",
+            transform: "translateX(-50%)", display: "flex",
+            alignItems: "center", gap: 12, zIndex: 20,
+            background: "rgba(20,20,20,0.85)", padding: "8px 16px",
+            borderRadius: 999, backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.15)",
+          }}>
+            <button onClick={() => setScale(s => clamp(s * 0.8, MODAL_MIN_SCALE, MODAL_MAX_SCALE))} style={btnStyle}>−</button>
+            <button onClick={() => { setScale(1); setTranslate({ x: 0, y: 0 }); }}
+              style={{ ...btnStyle, borderRadius: 999, width: "auto", padding: "0 12px", fontSize: 11, letterSpacing: "0.06em" }}>
+              RESET
+            </button>
+            <button onClick={() => setScale(s => clamp(s * 1.25, MODAL_MIN_SCALE, MODAL_MAX_SCALE))} style={btnStyle}>+</button>
+          </div>
 
           {/* Image interaction zone */}
           <div
@@ -489,7 +530,7 @@ export default function ImageZoom({ imageUrl, alt, fuelBadge }: ImageZoomProps) 
             <img
               src={imageUrl} alt={alt} draggable={false}
               style={{
-                maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain",
+                maxWidth: "88vw", maxHeight: "75vh", objectFit: "contain",
                 transform: `scale(${scale}) translate(${translate.x / scale}px, ${translate.y / scale}px)`,
                 transformOrigin: "center center",
                 userSelect: "none", WebkitUserSelect: "none",
@@ -507,9 +548,9 @@ export default function ImageZoom({ imageUrl, alt, fuelBadge }: ImageZoomProps) 
 }
 
 const btnStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.12)", border: "none",
-  borderRadius: "50%", width: 36, height: 36,
-  color: "#fff", fontSize: 20, fontWeight: 700,
+  background: "rgba(255,255,255,0.15)", border: "none",
+  borderRadius: "50%", width: 32, height: 32,
+  color: "#fff", fontSize: 18, fontWeight: 700,
   cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
   lineHeight: 1,
 };

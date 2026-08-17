@@ -3,9 +3,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Download, Menu, Maximize2, Minimize2, ChevronLeft, ChevronRight, Loader2, RotateCw } from "lucide-react";
 import { COMPANY_OVERVIEW as D } from "@/data/company-overview";
 
-// â”€â”€â”€ SCALED SLIDE WRAPPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── SCALED SLIDE WRAPPER ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 // This guarantees the slide is exactly 1280x720 internally and scales to fit ANY screen.
 function ScaledSlide({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,7 @@ function ScaledSlide({ children }: { children: React.ReactNode }) {
   );
 }
 
-// â”€â”€â”€ CHAPTER INDEX (23 pages with Section Dividers & New Goals Page) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── CHAPTER INDEX (23 pages with Section Dividers & New Goals Page) ──────────────────────────────
 const CHAPTERS = [
   { id: "cover", num: "-", label: "Cover" },
   { id: "toc", num: "-", label: "Contents" },
@@ -70,7 +71,7 @@ const CHAPTERS = [
   { id: "closing", num: "17", label: "Closing" },
 ];
 
-// â”€â”€â”€ SHARED â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── SHARED ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function Tag({ text }: { text: string }) {
   return (
     <div className="flex items-center gap-2 mb-3">
@@ -83,7 +84,7 @@ function Tag({ text }: { text: string }) {
 function Img({ id, prompt, className = "" }: { id: string; prompt: string; className?: string }) {
   return (
     <div className={`flex flex-col items-center justify-center border border-dashed border-[var(--border-secondary)] bg-[var(--bg-tertiary)] select-none ${className}`}>
-      <span className="text-[var(--border-secondary)] text-3xl mb-1">â—»</span>
+      <span className="text-[var(--border-secondary)] text-3xl mb-1">■</span>
       <span className="font-mono text-[13px] font-bold text-[var(--text-muted)]">{id}</span>
       <span className="text-[13px] text-center px-3 mt-0.5 leading-relaxed max-w-[160px] text-[var(--border-secondary)]">{prompt}</span>
     </div>
@@ -92,7 +93,7 @@ function Img({ id, prompt, className = "" }: { id: string; prompt: string; class
 
 function RedLine() { return <div className="w-full h-px bg-[#D71920] opacity-30" />; }
 
-// â”€â”€â”€ PAGE 0: COVER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 0: COVER ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function CoverPage({ goTo }: { goTo: (i: number) => void }) {
   return (
     <div className="w-full h-full flex relative overflow-hidden bg-[var(--bg-primary)]">
@@ -112,20 +113,20 @@ function CoverPage({ goTo }: { goTo: (i: number) => void }) {
 
         {/* Centre headings */}
         <div className="pr-8">
-          <div className="text-[13px] font-bold tracking-[0.35em] uppercase text-[#D71920] mb-4">Company Profile Â· 2026-2027</div>
+          <div className="text-[13px] font-bold tracking-[0.35em] uppercase text-[#D71920] mb-4">Company Profile · 2026-2027</div>
           <h1 className="font-bebas text-[96px] leading-none text-[var(--text-primary)] tracking-wide mb-1">Bushra<br />Impex</h1>
-          <div className="font-bebas text-[40px] text-[var(--text-muted)] tracking-[0.15em]">Ã— X1 Power</div>
+          <div className="font-bebas text-[40px] text-[var(--text-muted)] tracking-[0.15em]">× X1 Power</div>
         </div>
 
         {/* Bottom meta */}
         <div className="flex items-end justify-between pr-[4vw]">
           <div>
-            <p className="text-[13px] text-[var(--text-muted)] tracking-widest uppercase mb-0.5">Est. 2012 Â· Bengaluru, Karnataka, India</p>
+            <p className="text-[13px] text-[var(--text-muted)] tracking-widest uppercase mb-0.5">Est. 2012 · Bengaluru, Karnataka, India</p>
             <p className="text-[13px] text-[var(--text-muted)] tracking-widest uppercase">Powering Agriculture. Engineering Reliability.</p>
           </div>
           <button onClick={() => goTo(1)}
             className="text-[13px] tracking-widest uppercase border border-[var(--border-secondary)] text-[var(--text-muted)] hover:border-[#D71920] hover:text-[#D71920] px-4 py-1.5 transition-all mb-1 mr-2">
-            View Contents â†’
+            View Contents →
           </button>
         </div>
       </div>
@@ -142,7 +143,7 @@ function CoverPage({ goTo }: { goTo: (i: number) => void }) {
   );
 }
 
-// â”€â”€â”€ PAGE 1: TABLE OF CONTENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 1: TABLE OF CONTENTS ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function TocPage({ goTo }: { goTo: (i: number) => void }) {
   const chapters = CHAPTERS.filter(c => !["cover", "toc"].includes(c.id));
   return (
@@ -152,7 +153,7 @@ function TocPage({ goTo }: { goTo: (i: number) => void }) {
       {/* LEFT - Title block */}
       <div className="w-64 border-r border-[var(--border-color)] flex flex-col justify-between p-8">
         <div>
-          <Tag text="Bushra Impex Â· X1 Power" />
+          <Tag text="Bushra Impex · X1 Power" />
           <h2 className="font-bebas text-[56px] leading-none text-[var(--text-primary)] tracking-wide">Table<br />of Contents</h2>
         </div>
         <div>
@@ -178,7 +179,7 @@ function TocPage({ goTo }: { goTo: (i: number) => void }) {
   );
 }
 
-// â”€â”€â”€ PAGE 2: COMPANY OVERVIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 2: COMPANY OVERVIEW ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function CompanyOverviewPage() {
   const d = D.overview;
   const paras = d.subheading.split("\n\n");
@@ -195,7 +196,7 @@ function CompanyOverviewPage() {
           <div className="flex flex-col gap-2">
             {d.points.map(pt => (
               <div key={pt.label} className="flex items-start gap-2.5">
-                <span className="text-[#D71920] text-sm shrink-0 mt-0.5">â—†</span>
+                <span className="text-[#D71920] text-sm shrink-0 mt-0.5">◆</span>
                 <div>
                   <div className="text-[13px] font-bold text-[var(--text-primary)]">{pt.label}</div>
                   <div className="text-[12px] text-[var(--text-muted)] leading-relaxed">{pt.desc}</div>
@@ -227,7 +228,7 @@ function CompanyOverviewPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 3: STORY OF SUCCESS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 3: STORY OF SUCCESS ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function StoryPage() {
   const d = D.story;
   return (
@@ -255,7 +256,7 @@ function StoryPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 4: FACTS & FIGURES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 4: FACTS & FIGURES ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function FactsPage() {
   const d = D.facts;
   return (
@@ -286,7 +287,7 @@ function FactsPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 5: FINANCIAL PERFORMANCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 5: FINANCIAL PERFORMANCE ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function FinancialPage() {
   const d = D.financial;
   return (
@@ -351,7 +352,7 @@ function FinancialPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 6: R&D â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 6: R&D ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function RndPage() {
   const d = D.rnd;
   return (
@@ -389,7 +390,7 @@ function RndPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 6: SUSTAINABILITY (new content) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 6: SUSTAINABILITY (new content) ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function SustainabilityPage() {
   const d = D.sustainability;
   return (
@@ -431,13 +432,13 @@ function SustainabilityPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 7: INDIA OPPORTUNITY (3-card layout) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 7: INDIA OPPORTUNITY (3-card layout) ────────────────────────────────────────────────────────────────────────────────────────────────
 function IndiaPage() {
   const d = D.indiaOpportunity;
   const stats = [
     { value: "140M+", label: "Agricultural Households", desc: "India is home to over 140 million agricultural households, making it one of the world's largest agricultural markets." },
     { value: "60%+", label: "Mechanisation Potential", desc: "Farm mechanisation in India remains uneven across crops and regions, creating significant room for future growth as adoption expands nationwide." },
-    { value: "â‚¹1.6L Cr+", label: "Agricultural Machinery Market", desc: "India's agricultural machinery industry continues to expand rapidly, driven by government support, rising farm incomes and increasing mechanisation demand." },
+    { value: "₹1.6L Cr+", label: "Agricultural Machinery Market", desc: "India's agricultural machinery industry continues to expand rapidly, driven by government support, rising farm incomes and increasing mechanisation demand." },
   ];
   return (
     <div className="w-full h-full bg-[var(--bg-primary)] flex flex-col overflow-hidden p-8">
@@ -460,7 +461,7 @@ function IndiaPage() {
       <div className="grid grid-cols-2 gap-x-8 gap-y-2 mt-auto">
         {d.keyPoints.map((kp, i) => (
           <div key={i} className="flex items-start gap-2 text-[13px] text-[var(--text-secondary)]">
-            <span className="text-[#D71920] shrink-0 font-bold">âœ“</span>
+            <span className="text-[#D71920] shrink-0 font-bold">✓</span>
             <span className="leading-snug">{kp}</span>
           </div>
         ))}
@@ -470,7 +471,7 @@ function IndiaPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 10: DEALER NETWORK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 10: DEALER NETWORK ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function DealerPage() {
   const d = D.dealerNetwork;
   return (
@@ -493,7 +494,7 @@ function DealerPage() {
           {d.journey.map((step, i) => (
             <div key={step} className="flex items-center gap-1.5">
               <span className="text-[13px] bg-[var(--bg-secondary)] border border-[var(--border-color)] px-2 py-0.5 text-[var(--text-secondary)]">{step}</span>
-              {i < d.journey.length - 1 && <span className="text-[13px] text-[#D71920]">â†“</span>}
+              {i < d.journey.length - 1 && <span className="text-[13px] text-[#D71920]">↓</span>}
             </div>
           ))}
         </div>
@@ -515,7 +516,7 @@ function DealerPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 11: OUR BRANDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 11: OUR BRANDS ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function BrandsPage() {
   const d = D.brands;
   return (
@@ -559,7 +560,7 @@ function BrandsPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 12: PRODUCT ECOSYSTEM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 12: PRODUCT ECOSYSTEM ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function ProductsPage() {
   const d = D.products;
   return (
@@ -571,7 +572,7 @@ function ProductsPage() {
         </div>
         <div className="flex flex-col items-end gap-1">
           <p className="text-[13px] text-[var(--text-muted)] text-right max-w-xs leading-relaxed">{d.body}</p>
-          <Link href="/products" className="text-[13px] font-bold uppercase tracking-widest text-[#D71920] hover:underline">Explore Full Catalogue â†’</Link>
+          <Link href="/products" className="text-[13px] font-bold uppercase tracking-widest text-[#D71920] hover:underline">Explore Full Catalogue →</Link>
         </div>
       </div>
       <RedLine />
@@ -622,7 +623,7 @@ function ProductsPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 13: LEADERSHIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 13: LEADERSHIP ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function LeadershipPage() {
   const d = D.leadership;
   return (
@@ -636,7 +637,7 @@ function LeadershipPage() {
           {d.philosophyCards.map(p => (
             <div key={p.title} className="p-2 bg-[var(--bg-secondary)] border border-[var(--border-color)]">
               <div className="text-[13px] font-bold uppercase tracking-widest text-[#D71920] mb-0.5">{p.title}</div>
-              <div className="text-[13px] text-[var(--text-muted)] leading-relaxed">{p.description.substring(0, 60)}â€¦</div>
+              <div className="text-[13px] text-[var(--text-muted)] leading-relaxed">{p.description.substring(0, 60)}…</div>
             </div>
           ))}
         </div>
@@ -673,7 +674,7 @@ function LeadershipPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 14: MANAGEMENT & PEOPLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 14: MANAGEMENT & PEOPLE ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function ManagementPage() {
   const depts = [
     { title: "Leading with Vision", purpose: "Strategic direction, governance and long-term planning for Bushra Impex." },
@@ -720,7 +721,7 @@ function ManagementPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 15: INFRASTRUCTURE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 15: INFRASTRUCTURE ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function InfrastructurePage() {
   const d = D.infrastructure;
   const cards = [
@@ -756,7 +757,7 @@ function InfrastructurePage() {
   );
 }
 
-// â”€â”€â”€ PAGE 16: FUTURE ROADMAP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 16: FUTURE ROADMAP ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function FuturePage() {
   const d = D.future;
   return (
@@ -776,7 +777,7 @@ function FuturePage() {
             <div className="font-bebas text-2xl text-[#D71920] tracking-wide mb-2">{phase.period}</div>
             {phase.milestones.map(m => (
               <div key={m} className="flex gap-1.5 mb-1">
-                <span className="text-[#D71920] text-[13px] shrink-0 mt-0.5">â†’</span>
+                <span className="text-[#D71920] text-[13px] shrink-0 mt-0.5">→</span>
                 <span className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{m}</span>
               </div>
             ))}
@@ -805,7 +806,7 @@ function FuturePage() {
   );
 }
 
-// â”€â”€â”€ PAGE 17: CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 17: CONTACT ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function ContactPage() {
   const d = D.contact;
   return (
@@ -822,7 +823,7 @@ function ContactPage() {
               <div>
                 <div className="text-[13px] font-bold text-[var(--text-primary)] mb-0.5">{card.title}</div>
                 <div className={`text-[13px] mb-1 ${card.detail.includes("TODO") ? "text-amber-500 font-medium" : "text-[var(--text-muted)]"}`}>{card.detail}</div>
-                {card.action && card.href && <a href={card.href} className="text-[13px] text-[#D71920] font-bold uppercase tracking-widest hover:underline">{card.action} â†’</a>}
+                {card.action && card.href && <a href={card.href} className="text-[13px] text-[#D71920] font-bold uppercase tracking-widest hover:underline">{card.action} →</a>}
               </div>
             </div>
           ))}
@@ -838,7 +839,7 @@ function ContactPage() {
               <div>
                 <div className="text-[13px] font-bold text-[var(--text-primary)] mb-0.5">{card.title}</div>
                 <div className={`text-[13px] ${card.detail.includes("TODO") ? "text-amber-500 font-medium" : "text-[var(--text-muted)]"}`}>{card.detail}</div>
-                {card.action && card.href && <a href={card.href} className="text-[13px] text-[#D71920] font-bold uppercase tracking-widest hover:underline">{card.action} â†’</a>}
+                {card.action && card.href && <a href={card.href} className="text-[13px] text-[#D71920] font-bold uppercase tracking-widest hover:underline">{card.action} →</a>}
               </div>
             </div>
           ))}
@@ -852,7 +853,7 @@ function ContactPage() {
           </div>
         </div>
         <Link href="/contact" className="bg-[#D71920] text-white text-[13px] font-bold uppercase tracking-widest px-5 py-2.5 text-center hover:bg-[#b0151b] transition-colors">
-          Send an Enquiry â†’
+          Send an Enquiry →
         </Link>
       </div>
 
@@ -860,7 +861,7 @@ function ContactPage() {
   );
 }
 
-// â”€â”€â”€ PAGE 18: CLOSING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PAGE 18: CLOSING ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function ClosingPage() {
   const d = D.closing;
   return (
@@ -889,7 +890,7 @@ function ClosingPage() {
             </div>
             <div className="ml-auto">
               <Link href="/products" className="border border-[var(--border-secondary)] text-[var(--text-secondary)] text-[13px] font-bold uppercase tracking-widest px-4 py-2 hover:border-[#D71920] hover:text-[#D71920] transition-all">
-                {d.cta.label} â†’
+                {d.cta.label} →
               </Link>
             </div>
           </div>
@@ -905,7 +906,7 @@ function ClosingPage() {
   );
 }
 
-// â”€â”€â”€ SECTION DIVIDERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── SECTION DIVIDERS ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function DividerPage({ title, num }: { title: string; num: string }) {
   return (
     <div className="w-full h-full bg-[#0d0d0d] flex flex-col justify-between p-16 relative overflow-hidden text-white select-none">
@@ -923,8 +924,8 @@ function DividerPage({ title, num }: { title: string; num: string }) {
       </div>
 
       <div className="flex items-center justify-between text-gray-500 text-[10px] font-mono tracking-widest uppercase">
-        <span>Bushra Impex Ã— X1 Power</span>
-        <span>Corporate Profile Â· 2026-2027</span>
+        <span>Bushra Impex × X1 Power</span>
+        <span>Corporate Profile · 2026-2027</span>
       </div>
     </div>
   );
@@ -935,7 +936,7 @@ function Divider2Page() { return <DividerPage title="Story of Success" num="02" 
 function Divider3Page() { return <DividerPage title="People & Network" num="03" />; }
 function Divider4Page() { return <DividerPage title="Future Plans" num="04" />; }
 
-// â”€â”€â”€ NEW PAGE: PLANS & GOALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── NEW PAGE: PLANS & GOALS ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function GoalsPage() {
   const d = D.goals;
   return (
@@ -965,7 +966,7 @@ function GoalsPage() {
   );
 }
 
-// â”€â”€â”€ ALL PAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── ALL PAGES ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 const PAGES = [
   CoverPage, TocPage,
   Divider1Page, CompanyOverviewPage, FinancialPage, RndPage, SustainabilityPage, IndiaPage, FactsPage, BrandsPage, ProductsPage,
@@ -974,7 +975,7 @@ const PAGES = [
   Divider4Page, FuturePage, GoalsPage, ContactPage, ClosingPage,
 ];
 
-// â”€â”€â”€ PRINT LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── PRINT LAYOUT ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 function PrintLayout() {
   return (
     <div id="cp-print-layout" style={{ display: "none" }}>
@@ -992,7 +993,7 @@ function PrintLayout() {
   );
 }
 
-// â”€â”€â”€ MAIN VIEWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ───────── MAIN VIEWER ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 export default function CompanyProfileViewer() {
   const [current, setCurrent] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -1006,7 +1007,7 @@ export default function CompanyProfileViewer() {
     setSidebarOpen(false);
   }, [total]);
 
-  // â”€â”€â”€ NATIVE BROWSER PRINT / PUPPETEER EXPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ───────── NATIVE BROWSER PRINT / PUPPETEER EXPORT ────────────────────────────────────────────────────────────────────────────────────
   const downloadPDF = useCallback(() => {
     // Open the hosted Company Profile PDF in a new tab
     window.open("https://drive.google.com/file/d/1TyL9hOoL24_0Rvw5wWPby0NvYiMMtemV/view?usp=drive_link", "_blank");
@@ -1027,31 +1028,31 @@ export default function CompanyProfileViewer() {
 
   return (
     <>
-      {/* Portrait mode hint â€” CSS media query shows this only in portrait on small screens */}
+      {/* Portrait mode hint — CSS media query shows this only in portrait on small screens */}
       <style>{`
         @media (max-width: 767px) and (orientation: portrait) {
           .rotate-hint { display: flex !important; }
         }
       `}</style>
       <div className="rotate-hint hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-black/80 text-white text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-full items-center gap-2 pointer-events-none">
-        <span>ðŸ”„</span> Rotate for best view
+        <RotateCw className="w-3.5 h-3.5" /> Rotate for best view
       </div>
       <div
         className={`flex flex-col bg-[#111] ${fullscreen ? "fixed inset-0 z-[999]" : "w-full h-full"}`}
         style={fullscreen ? { height: "100svh" } : { height: "100%" }}
       >
-        {/* â”€â”€ VIEWER TOP BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ────── VIEWER TOP BAR ──────────────────────────────────────────────────────────────────────────────────────────────── */}
         <div className="h-11 bg-[#0d0d0d] border-b border-gray-800 flex items-center gap-3 px-5 shrink-0">
           <button
             onClick={() => setSidebarOpen(v => !v)}
             className="flex items-center gap-2 text-gray-400 hover:text-white text-[13px] uppercase tracking-widest transition-colors"
           >
-            â˜° <span>Contents</span>
+            <Menu className="w-4 h-4 text-gray-400" /> <span>Contents</span>
           </button>
 
           <div className="flex-1" />
           <span className="hidden sm:block text-[13px] text-gray-600 font-mono tracking-wider">
-            Bushra Impex Ã— X1 Power Â· Corporate Profile
+            Bushra Impex – X1 Power · Corporate Profile
           </span>
           {/* Download PDF */}
           <button
@@ -1063,9 +1064,9 @@ export default function CompanyProfileViewer() {
               }`}
           >
             {isDownloading ? (
-              <><span className="animate-spin">âŸ³</span> {downloadProgress}%</>
+              <><span className="animate-spin">⟳</span> {downloadProgress}%</>
             ) : (
-              <>â¬‡ Download PDF</>
+              <>⬇ Download PDF</>
             )}
           </button>
 
@@ -1074,19 +1075,19 @@ export default function CompanyProfileViewer() {
 
           <button onClick={() => setFullscreen(v => !v)}
             className="text-gray-500 hover:text-white text-[13px] px-2 py-1 border border-gray-800 hover:border-gray-600 transition-colors">
-            {fullscreen ? "âŠ¡" : "âŠž"}
+            {fullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
           </button>
           <div className="w-px h-3 bg-gray-800" />
           <button onClick={() => goTo(current - 1)} disabled={current === 0}
-            className="text-gray-500 hover:text-white disabled:opacity-20 text-sm px-2 transition-colors">â€¹</button>
+            className="text-gray-500 hover:text-white disabled:opacity-20 text-sm px-1.5 transition-colors flex items-center justify-center"><ChevronLeft className="w-4 h-4" /></button>
           <span className="font-mono text-[13px] text-gray-400 w-14 text-center">
             {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
           <button onClick={() => goTo(current + 1)} disabled={current === total - 1}
-            className="text-gray-500 hover:text-white disabled:opacity-20 text-sm px-2 transition-colors">â€º</button>
+            className="text-gray-500 hover:text-white disabled:opacity-20 text-sm px-1.5 transition-colors flex items-center justify-center"><ChevronRight className="w-4 h-4" /></button>
         </div>
 
-        {/* â”€â”€ MAIN AREA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ────── MAIN AREA ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
         <div className="flex flex-1 overflow-hidden">
 
           {/* Sidebar TOC */}
@@ -1125,7 +1126,7 @@ export default function CompanyProfileViewer() {
           </div>
         </div>
 
-        {/* â”€â”€ BOTTOM BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ────── BOTTOM BAR ───────────────────────────────────────────────────────────────────────────────────────────────────────── */}
         <div className="h-8 bg-[#0d0d0d] border-t border-gray-800 flex items-center justify-between px-5 shrink-0">
           <span className="font-mono text-[13px] text-gray-600">{CHAPTERS[current]?.label}</span>
           <div className="flex items-center gap-1">
@@ -1134,7 +1135,7 @@ export default function CompanyProfileViewer() {
                 className={`h-0.5 rounded-full transition-all ${i === current ? "w-5 bg-[#D71920]" : "w-1 bg-gray-800 hover:bg-gray-700"}`} />
             ))}
           </div>
-          <span className="font-mono text-[13px] text-gray-600">â† â†’ keys Â· F fullscreen Â· â¬‡ PDF</span>
+          <span className="font-mono text-[13px] text-gray-600">† → keys · F fullscreen · ⬇ PDF</span>
         </div>
       </div>
 

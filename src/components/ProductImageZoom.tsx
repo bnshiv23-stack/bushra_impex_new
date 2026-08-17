@@ -444,34 +444,62 @@ export default function ProductImageZoom({
           }}
           onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
         >
-          {/* Close ✕ */}
-          <button onClick={() => setModalOpen(false)} style={{
-            position: "absolute", top: 16, right: 16, zIndex: 10,
-            background: "rgba(255,255,255,0.1)", border: "none",
-            borderRadius: "50%", width: 44, height: 44,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: "pointer", color: "#fff", fontSize: 20,
-            transition: "background 0.2s",
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.25)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
-          >✕</button>
+          {/* Top Bar with Safe Area Inset */}
+          <div style={{
+            position: "absolute", top: "calc(16px + env(safe-area-inset-top, 0px))",
+            left: 16, right: 16, zIndex: 9999999,
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+          }}>
+            {/* Prominent High-Contrast Close Button */}
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              style={{
+                background: "#D71920", border: "none",
+                borderRadius: 999, padding: "8px 18px",
+                display: "flex", alignItems: "center", gap: 8,
+                cursor: "pointer", color: "#fff", fontSize: 13, fontWeight: 700,
+                letterSpacing: "0.05em", textTransform: "uppercase",
+                boxShadow: "0 4px 20px rgba(215,25,32,0.6)",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Close Zoom
+            </button>
+
+            {/* Top Right Quick Close ✕ */}
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              style={{
+                background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.3)",
+                borderRadius: "50%", width: 40, height: 40,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", color: "#fff", fontSize: 18, fontWeight: 700,
+                boxShadow: "0 2px 10px rgba(0,0,0,0.5)",
+              }}
+            >✕</button>
+          </div>
 
           {/* Zoom % indicator */}
           <div style={{
-            position: "absolute", top: 20, left: "50%",
-            transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)",
-            fontSize: 13, fontWeight: 700, letterSpacing: "0.05em",
+            position: "absolute", top: "calc(20px + env(safe-area-inset-top, 0px))", left: "50%",
+            transform: "translateX(-50%)", color: "rgba(255,255,255,0.7)",
+            fontSize: 12, fontWeight: 700, letterSpacing: "0.05em",
+            background: "rgba(255,255,255,0.1)", padding: "4px 12px", borderRadius: 999,
             pointerEvents: "none", zIndex: 10,
           }}>{Math.round(zoom)}%</div>
 
           {/* Hint text — device adaptive */}
           <div style={{
-            position: "absolute", top: 48, left: "50%",
-            transform: "translateX(-50%)", color: "rgba(255,255,255,0.25)",
+            position: "absolute", top: "calc(64px + env(safe-area-inset-top, 0px))", left: "50%",
+            transform: "translateX(-50%)", color: "rgba(255,255,255,0.35)",
             fontSize: 10, fontWeight: 700, textTransform: "uppercase" as const,
             letterSpacing: "0.1em", pointerEvents: "none",
-            whiteSpace: "nowrap" as const,
+            whiteSpace: "nowrap" as const, zIndex: 10,
           }}>
             {hasPointer
               ? "Scroll to zoom · Drag to pan · +/− keys · Esc to close"

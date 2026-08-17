@@ -211,8 +211,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-[#D71920] selection:text-white transition-colors duration-300">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange={false}
         >
           {/* Global JSON-LD: Organization */}

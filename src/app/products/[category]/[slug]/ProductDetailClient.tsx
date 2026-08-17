@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -187,6 +187,19 @@ export default function ProductDetailClient({
   async function handleDownloadBrochure() {
     if (!product) return;
     setIsGeneratingPDF(true);
+    
+    // Check if on iOS / Safari / Chrome iOS
+    const isIOS = typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
+    const printUrl = `/products/${product.category}/${product.slug}?print=true`;
+
+    if (isIOS) {
+      // On iOS Safari and Chrome iOS, window.open inside async callback is blocked.
+      // Direct navigation to print mode triggers the native PDF / Print preview sheet reliably.
+      window.open(printUrl, "_blank", "noopener,noreferrer");
+      setIsGeneratingPDF(false);
+      return;
+    }
+
     try {
       const res = await fetch(`/api/pdf/product?slug=${product.slug}&category=${product.category}`);
       const contentType = res.headers.get("content-type") || "";
@@ -205,8 +218,7 @@ export default function ProductDetailClient({
         return;
       }
 
-      // If in local dev mode or on server without BROWSER binding, fallback to opening print view
-      const printUrl = `/products/${product.category}/${product.slug}?print=true`;
+      // Fallback: open print view
       const printWin = window.open(printUrl, "_blank");
       if (printWin) {
         printWin.addEventListener("load", () => {
@@ -217,8 +229,7 @@ export default function ProductDetailClient({
       }
     } catch (err) {
       console.error(err);
-      const printUrl = `/products/${product.category}/${product.slug}?print=true`;
-      window.open(printUrl, "_blank");
+      window.open(printUrl, "_blank", "noopener,noreferrer");
     } finally {
       setIsGeneratingPDF(false);
     }
@@ -277,7 +288,7 @@ export default function ProductDetailClient({
         <div className="container-site grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_460px] gap-8 md:gap-12 xl:gap-20 items-start">
 
           {/* LEFT: thumbnail strip + main image */}
-          <div className="flex flex-col-reverse lg:flex-row gap-3 sticky top-24 relative">
+          <div className="flex flex-col-reverse lg:flex-row gap-3 lg:sticky lg:top-24 relative">
             {/* Thumbnails */}
             {productImages.length > 1 && (
               <div className="flex flex-row lg:flex-col gap-2 w-full lg:w-[60px] overflow-x-auto hide-scrollbar shrink-0">

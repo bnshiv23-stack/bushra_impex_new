@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* â”€â”€ DESKTOP NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ── DESKTOP NAV ── */}
         <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
           {NAV_LINKS.map((l) => (
             <Link
@@ -80,7 +80,7 @@ export default function Navbar() {
                   className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-color)] text-[10px] font-bold uppercase tracking-widest text-[#D71920] hover:bg-[var(--bg-secondary)] transition-colors"
                 >
                   <span>View All Products</span>
-                  <span>â†’</span>
+                  <span>→</span>
                 </Link>
                 <div className="grid grid-cols-2 p-2">
                   {CATEGORIES.map((cat) => (
@@ -100,7 +100,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* â”€â”€ RIGHT CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ── RIGHT CTA ── */}
         <div className="hidden xl:flex items-center gap-4 2xl:gap-5">
           <ThemeToggle />
           <a
@@ -119,7 +119,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* â”€â”€ MOBILE / TABLET TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ── MOBILE / TABLET TOGGLE ── */}
         <div className="xl:hidden flex items-center gap-3">
           <button
             className="p-2 text-[var(--text-primary)]"
@@ -133,7 +133,7 @@ export default function Navbar() {
 
     </header>
 
-      {/* â”€â”€ MOBILE MENU: BACKDROP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── MOBILE MENU: BACKDROP ── */}
       {mobileOpen && (
         <div
           onClick={() => setMobileOpen(false)}
@@ -146,7 +146,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* â”€â”€ MOBILE MENU: SLIDE-IN DRAWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── MOBILE MENU: SLIDE-IN DRAWER ── */}
       <div
         style={{
           position: "fixed",
@@ -308,7 +308,7 @@ export default function Navbar() {
 
         </div> {/* End of Scrollable Container */}
 
-        {/* â”€â”€ THE PEEKING MASCOT (commented out â€” uncomment to restore) â”€â”€
+        {/* -- THE PEEKING MASCOT (commented out - uncomment to restore) --
         <div style={{
           position: "absolute",
           bottom: -15,
@@ -329,7 +329,7 @@ export default function Navbar() {
             unoptimized
           />
         </div>
-        â”€â”€ END MASCOT */}
+        ── END MASCOT */}
 
 
       </div>

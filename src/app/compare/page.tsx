@@ -154,8 +154,8 @@ function CompareContent() {
           </div>
         </section>
 
-        {/* Matrix Section */}
-        <section className="container-site">
+        {/* Desktop Comparison Matrix Section (Hidden on Mobile) */}
+        <section className="container-site hidden md:block">
           <div className="overflow-x-auto bg-white dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#333333]">
             <table className="w-full text-left border-collapse min-w-[800px]">
               
@@ -382,6 +382,135 @@ function CompareContent() {
 
               </tbody>
             </table>
+          </div>
+        </section>
+
+        {/* ── MOBILE VERTICAL COMPARISON VIEW (Visible on mobile/tablet) ── */}
+        <section className="container-site block md:hidden space-y-6">
+          {/* Sticky Mobile Comparison Thumbnails Bar */}
+          <div className="sticky top-[72px] z-20 bg-white/95 dark:bg-[#111111]/95 backdrop-blur-md border border-[#E5E5E5] dark:border-[#333333] p-3 shadow-md">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#777777] dark:text-[#A0A0A0]">
+                Comparing {products.length} Models
+              </span>
+              <span className="text-[9px] text-[#E30613] font-semibold">Scroll down for full specs ↓</span>
+            </div>
+            <div className={`grid gap-2 ${products.length === 3 ? "grid-cols-3" : products.length === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
+              {products.map((p) => (
+                <div key={p.slug} className="flex items-center gap-2 p-1.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-color)] overflow-hidden">
+                  {p.image && (
+                    <img src={p.image} alt={p.name} className="w-8 h-8 object-contain shrink-0 mix-blend-multiply dark:mix-blend-normal" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[9px] font-bold text-[#E30613] uppercase tracking-wider truncate leading-tight">{p.modelCode}</p>
+                    <p className="text-[10px] font-bold text-[#111111] dark:text-white truncate leading-tight">{p.name.split(" ")[0]}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Selected Models Detailed Summary Cards */}
+          <div className="grid grid-cols-1 gap-4">
+            {products.map((p) => (
+              <div key={p.slug} className="bg-white dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#333333] p-5 relative shadow-sm">
+                {products.length > 1 && (
+                  <button
+                    onClick={() => removeProduct(p.slug)}
+                    className="absolute top-3 right-3 text-[#777777] hover:text-[#E30613] p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                    title="Remove"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+                <div className="flex gap-4 items-center">
+                  <div className="w-20 h-20 bg-[var(--bg-secondary)] border border-[var(--border-color)] p-2 flex items-center justify-center shrink-0">
+                    {p.image ? (
+                      <img src={p.image} alt={p.name} className="max-h-full max-w-full object-contain mix-blend-multiply dark:mix-blend-normal" />
+                    ) : (
+                      <span className="font-bebas text-xs">{p.modelCode}</span>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-[9px] font-bold text-[#E30613] tracking-widest uppercase block">{p.modelCode}</span>
+                    <h3 className="font-bebas text-[22px] text-[#111111] dark:text-white leading-tight">{p.name}</h3>
+                    <div className="flex gap-1.5 mt-1">
+                      <span className="px-1.5 py-0.5 text-[8px] font-bold uppercase border border-[#E5E5E5] dark:border-[#333333] text-[#777777]">
+                        {p.fuelType}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#E5E5E5] dark:border-[#333333] flex gap-2">
+                  <button
+                    onClick={() => handleInquire(p)}
+                    className="flex-1 bg-[#111111] dark:bg-white text-white dark:text-[#111111] text-[10px] font-bold uppercase tracking-wider py-2.5 flex items-center justify-center gap-1.5 hover:bg-[#D71920] dark:hover:bg-[#D71920] dark:hover:text-white transition-colors"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" /> Quote
+                  </button>
+                  <Link
+                    href={`/products/${p.category}/${p.slug}`}
+                    className="px-3 py-2.5 border border-[#E5E5E5] dark:border-[#333333] text-[10px] font-bold uppercase tracking-wider text-[var(--text-primary)] flex items-center hover:border-[#D71920] transition-colors"
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Vertical Specs Comparison Table */}
+          <div className="bg-white dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#333333] divide-y divide-[#E5E5E5] dark:divide-[#333333] shadow-sm">
+            <div className="p-4 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
+              <h4 className="font-bebas text-[24px] text-[#111111] dark:text-white">Technical Specifications</h4>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[#777777]">Side-by-side field comparison</p>
+            </div>
+
+            {visibleSpecKeys.map((key) => {
+              const values = products.map((p) => p.specs[key] || "N/A");
+              const isDifferent = new Set(values).size > 1;
+
+              return (
+                <div key={key} className={`p-4 ${isDifferent && showDifferencesOnly ? "bg-[#FFF0F0] dark:bg-[#2A0505]" : ""}`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#111111] dark:text-white">{key}</span>
+                    {isDifferent && <span className="text-[8px] font-bold uppercase px-1.5 py-0.5 bg-[#E30613] text-white rounded">Difference</span>}
+                  </div>
+                  <div className={`grid gap-2 ${products.length === 3 ? "grid-cols-3" : products.length === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
+                    {products.map((p) => (
+                      <div key={p.slug} className="p-2.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                        <span className="text-[9px] font-bold uppercase text-[#E30613] block truncate">{p.modelCode}</span>
+                        <span className="text-[12px] font-medium text-[#111111] dark:text-white mt-0.5 block leading-snug">{p.specs[key] || "—"}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Included Accessories on Mobile */}
+            <div className="p-4">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#111111] dark:text-white block mb-3">Included Accessories</span>
+              <div className="grid grid-cols-1 gap-3">
+                {products.map((p) => (
+                  <div key={p.slug} className="p-3 bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                    <span className="text-[10px] font-bold uppercase text-[#E30613] block mb-2">{p.name} ({p.modelCode})</span>
+                    {p.accessories && p.accessories.length > 0 ? (
+                      <ul className="space-y-1 text-[12px] text-[#333333] dark:text-[#CCCCCC]">
+                        {p.accessories.map((acc, idx) => (
+                          <li key={idx} className="flex items-center gap-1.5">
+                            <Check className="w-3.5 h-3.5 text-[#E30613] shrink-0" />
+                            <span>{acc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-[11px] text-[#777777] italic">Standard kit</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>

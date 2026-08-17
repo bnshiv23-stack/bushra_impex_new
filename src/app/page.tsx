@@ -204,9 +204,9 @@ export default function HomePage() {
                   className="inline-flex items-center gap-2 bg-[#D71920] text-white text-[11px] font-bold uppercase tracking-widest px-7 py-3 hover:bg-[#b01419] transition-colors">
                   View Details <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <a href={`/api/pdf/product?slug=${featuredHero.slug}`} download
+                <a href={`/products/${featuredHero.category}/${featuredHero.slug}?print=true`} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border border-[var(--border-color)] text-[var(--text-secondary)] text-[11px] font-bold uppercase tracking-widest px-7 py-3 hover:border-[var(--text-primary)] hover:text-[var(--text-primary)] transition-colors">
-                  <Download className="w-3.5 h-3.5" /> Brochure
+                  <Download className="w-3.5 h-3.5" /> Brochure PDF
                 </a>
               </div>
             </div>
