@@ -105,7 +105,7 @@ function CoverPage({ goTo }: { goTo: (i: number) => void }) {
         style={{ clipPath: "polygon(0 0, 100% 0, calc(100% - 4vw) 100%, 0 100%)" }}>
         {/* Top logos */}
         <div className="flex items-center gap-4 pr-8">
-          <Image src="/images/bushraimpex-new logo.png" alt="Bushra Impex" width={130} height={38} className="object-contain" />
+          <Image src="/images/bushraimpex-new logo.png" alt="Bushra Impex" width={130} height={38} className="object-contain " />
           <span className="w-px h-5 bg-[var(--border-color)]" />
           <Image src="/images/x1power-new logo.png" alt="X1 Power" width={90} height={32} className="object-contain dark:brightness-200" />
         </div>
@@ -879,7 +879,7 @@ function ClosingPage() {
         <div>
           <div className="flex items-center gap-8 py-5 border-t border-[var(--border-color)]">
             <div>
-              <Image src="/images/bushraimpex-new logo.png" alt="Bushra Impex" width={110} height={32} className="object-contain mb-1" />
+              <Image src="/images/bushraimpex-new logo.png" alt="Bushra Impex" width={110} height={32} className="object-contain  mb-1" />
               <div className="text-[13px] text-[var(--text-muted)] uppercase tracking-widest">Est. 2012</div>
             </div>
             <div className="w-px h-8 bg-[var(--border-color)]" />

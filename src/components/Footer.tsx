@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="flex flex-col gap-7">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/bushraimpex-new logo.png"
+                src="/images/bushraimpex-logo-white.png"
                 alt="Bushra Impex Official Distributor - Premium Agricultural Equipment"
                 width={140}
                 height={36}

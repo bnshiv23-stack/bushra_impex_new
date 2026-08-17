@@ -83,59 +83,60 @@ export default function HomePage() {
       {/* â”€â”€ SEO H1 (Visually Hidden) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <h1 className="sr-only">X1 Power by Bushra Impex - Premium Agricultural Equipment: Tillers, Weeders, Chainsaws, Chaff Cutters, Wood Chippers, Harvesters, Sprayers, Water Pumps, Earth Augers, Lawn Mowers, Pressure Washers & Rice Mills</h1>
 
-      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] lg:min-h-[92vh] flex flex-col justify-end pb-12 sm:pb-16 overflow-hidden">
-        {/* Hero Background Image */}
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section
+        id="hero"
+        className={
+          "relative w-full overflow-hidden bg-white dark:bg-black " +
+          "flex flex-col justify-end " +
+          // Height: 60vh on small phones, 70vh tablet, 85vh+ desktop
+          "min-h-[60vh] xs:min-h-[65vh] sm:min-h-[75vh] md:min-h-[82vh] lg:min-h-[88vh] xl:min-h-[92vh]"
+        }
+      >
+        {/* Hero Background — object-cover fills 100%, no black bars */}
         <Image
-          src="/HERO.png"
+          src="/hero.webp"
           alt="X1 Power by Bushra Impex - Powering The Backbone of India"
           fill
           priority
-          sizes="100vw"
-          className="object-cover object-center sm:object-top"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          className="object-cover object-center sm:object-center"
         />
 
-        {/* Sophisticated Multi-Layer Overlay for Perfect Contrast & Visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 pointer-events-none" />
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/20 to-black/60 pointer-events-none" />
+        {/* Bottom gradient — only for button legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 lg:h-44 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
 
-        <div className="container-site relative z-10 w-full flex flex-col items-center text-center gap-6 sm:gap-8 pt-24">
-          
-          {/* Glassmorphic Badge / Tagline pill */}
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/50 text-white animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-[#D71920] animate-pulse" />
-            <span className="text-[10px] sm:text-[12px] font-extrabold uppercase tracking-[0.25em] text-amber-300 drop-shadow-md">
-              10+ YEARS &nbsp;â€¢&nbsp; 29 STATES &nbsp;â€¢&nbsp; 1 MISSION
-            </span>
-          </div>
-
-          {/* Main Title & Subtitle Card with Glass Backdrop */}
-          <div className="max-w-4xl px-6 sm:px-10 py-8 sm:py-10 rounded-2xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl flex flex-col items-center gap-3">
-            <h2 className="font-bebas text-[clamp(40px,7vw,76px)] tracking-tight text-white leading-[0.95] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
-              POWERING THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-amber-200">BACKBONE OF INDIA</span>
-            </h2>
-            <p className="max-w-2xl text-[13px] sm:text-[15px] font-medium text-gray-200 leading-relaxed drop-shadow-md">
-              High-performance agricultural machinery engineered for Indian field conditions. FMTTI tested, ISO 9001:2015 certified, trusted by over 50,000+ farmers across 29 states.
-            </p>
-          </div>
-
-          {/* Previous Glassmorphic Call-to-Action Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/dealer"
-              className="px-6 sm:px-7 py-3 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/25 transition-all"
-            >
-              Become a Dealer
-            </Link>
-            <a
-              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
-              className="px-6 sm:px-7 py-3 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/25 transition-all"
-            >
-              Download Catalogue
-            </a>
-          </div>
-
+        {/* CTA Buttons — responsive: stacked on mobile, row on larger screens */}
+        <div className={
+          "relative z-10 w-full flex justify-center pb-6 sm:pb-8 lg:pb-10 px-4 sm:px-6 " +
+          "flex-col items-center gap-3 sm:flex-row sm:items-center"
+        }>
+          <Link
+            href="/dealer"
+            className={
+              "w-full sm:w-auto text-center " +
+              "px-6 sm:px-7 py-3 sm:py-3.5 rounded-full " +
+              "bg-white text-black text-[11px] sm:text-[12px] font-bold uppercase tracking-widest " +
+              "hover:bg-neutral-100 active:scale-95 transition-all shadow-lg"
+            }
+          >
+            Become a Dealer
+          </Link>
+          <a
+            href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={
+              "w-full sm:w-auto text-center " +
+              "px-6 sm:px-7 py-3 sm:py-3.5 rounded-full " +
+              "border border-white text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest " +
+              "hover:bg-white/20 active:scale-95 transition-all"
+            }
+          >
+            Download Catalogue
+          </a>
         </div>
+
       </section>
 
       {/* â”€â”€ TRUST STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
@@ -243,7 +244,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ CATEGORY GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── CATEGORY GRID ──────────────────────────────────────── */}
       <section className="py-24 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
         <div className="container-site">
           <div className="flex items-end justify-between border-b border-[var(--border-color)] pb-5 mb-12">
@@ -255,33 +256,56 @@ export default function HomePage() {
               All Products <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border-color)]">
-            {CATEGORIES.map((cat) => (
-              <Link
-                key={cat.slug}
-                href={`/products/${cat.slug}`}
-                className="group relative h-40 sm:h-52 flex flex-col justify-end p-5 overflow-hidden bg-[var(--bg-primary)]"
-              >
-                <div className="absolute inset-0 z-0 bg-white">
-                  <Image
-                    src={PRODUCTS.find(p => p.category === cat.slug)?.image || cat.bannerImage} alt={`X1 Power by Bushra Impex - ${cat.name} Category - Premium Agricultural Equipment`} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
-                    className="object-contain p-4 brightness-[0.9] group-hover:brightness-[0.8] group-hover:scale-105 transition-all duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-0"></div>
-                <div className="relative z-10 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-bebas text-[22px] sm:text-[24px] text-white leading-none">{cat.name}</h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {CATEGORIES.map((cat) => {
+              const catProduct = PRODUCTS.find((p) => p.category === cat.slug);
+              const imgSrc = catProduct?.image || cat.bannerImage;
+              const productCount = PRODUCTS.filter((p) => p.category === cat.slug).length;
+
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/products/${cat.slug}`}
+                  className="group relative bg-[var(--bg-primary)] border border-[var(--border-color)] hover:border-[#D71920] transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-xl hover:-translate-y-1 rounded-sm"
+                >
+                  {/* Red accent line on hover */}
+                  <div className="h-1 w-0 bg-[#D71920] group-hover:w-full transition-all duration-300" />
+
+                  {/* Clean Machine Image Showcase without any dark shadows */}
+                  <div className="relative aspect-[4/3] w-full bg-[var(--bg-secondary)] overflow-hidden flex items-center justify-center p-6 border-b border-[var(--border-color)]">
+                    {imgSrc && (
+                      <Image
+                        src={imgSrc}
+                        alt={`X1 Power by Bushra Impex - ${cat.name}`}
+                        fill
+                        sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                        className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
+                      />
+                    )}
                   </div>
-                  <span className="w-8 h-8 border border-white/20 flex items-center justify-center group-hover:bg-[#D71920] group-hover:border-[#D71920] transition-colors shrink-0">
-                    <ArrowRight className="w-3 h-3 text-white" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+
+                  {/* Category Details & Interactive Action Button */}
+                  <div className="p-4 sm:p-5 flex items-center justify-between gap-3 bg-[var(--bg-primary)]">
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#D71920] mb-0.5">
+                        {productCount > 0 ? `${productCount} Model${productCount > 1 ? "s" : ""}` : "Series"}
+                      </p>
+                      <h3 className="font-bebas text-[20px] sm:text-[22px] text-[var(--text-primary)] group-hover:text-[#D71920] transition-colors leading-tight truncate">
+                        {cat.name}
+                      </h3>
+                    </div>
+                    <span className="w-9 h-9 rounded-full backdrop-blur-md bg-white/60 dark:bg-white/10 border border-white/80 dark:border-white/20 shadow-sm flex items-center justify-center group-hover:bg-[#D71920] group-hover:border-[#D71920] group-hover:shadow-md group-hover:shadow-red-500/30 group-hover:scale-105 transition-all duration-300 shrink-0">
+                      <ArrowRight className="w-4 h-4 text-[var(--text-primary)] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
+
 
       {/* â”€â”€ WHY X1 POWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="py-24 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
@@ -544,4 +568,37 @@ export default function HomePage() {
     </>
   );
 }
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] lg:min-h-[92vh] flex flex-col justify-end pb-12 sm:pb-16 overflow-hidden bg-white dark:bg-black">
+        {/* Hero Background Image - object-cover fills fully, white/black bg for any gap */}
+        <Image
+          src="/hero.webp"
+          alt="X1 Power by Bushra Impex - Powering The Backbone of India"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
+        {/* Subtle bottom gradient for button readability only */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+
+        {/* CTA Buttons only — centered at bottom */}
+        <div className="relative z-10 w-full flex flex-wrap justify-center gap-3 pb-2">
+          <Link
+            href="/dealer"
+            className="px-7 py-3 rounded-full bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-neutral-100 transition-all shadow-lg"
+          >
+            Become a Dealer
+          </Link>
+          <a
+            href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
+            className="px-7 py-3 rounded-full border border-white text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
+          >
+            Download Catalogue
+          </a>
+        </div>
+
+      </section>
+
+      

@@ -1,5 +1,6 @@
 ﻿"use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,6 +19,14 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <>
@@ -26,7 +35,7 @@ export default function Navbar() {
 
         <Link href="/" className="flex items-center gap-2 sm:gap-4 min-w-0 shrink">
           <img
-            src="/images/bushraimpex-new logo.png"
+            src={isDark ? "/images/bushraimpex-logo-white.png" : "/images/bushraimpex-logo-dark.png"}
             alt="Bushra Impex Official Distributor"
             className="h-4 min-[375px]:h-5 sm:h-6 md:h-8 w-auto max-w-[40vw] sm:max-w-none object-contain transition-all duration-300"
           />
