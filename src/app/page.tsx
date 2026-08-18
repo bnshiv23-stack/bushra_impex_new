@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef } from "react";
 import Image from "next/image";
@@ -86,57 +86,110 @@ export default function HomePage() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section
         id="hero"
-        className={
-          "relative w-full overflow-hidden bg-white dark:bg-black " +
-          "flex flex-col justify-end " +
-          // Height: 60vh on small phones, 70vh tablet, 85vh+ desktop
-          "min-h-[60vh] xs:min-h-[65vh] sm:min-h-[75vh] md:min-h-[82vh] lg:min-h-[88vh] xl:min-h-[92vh]"
-        }
+        className="relative w-full overflow-hidden bg-white dark:bg-black"
       >
-        {/* Hero Background — object-cover fills 100%, no black bars */}
-        <Image
-          src="/hero.webp"
-          alt="X1 Power by Bushra Impex - Powering The Backbone of India"
-          fill
-          priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-          className="object-cover object-center sm:object-center"
-        />
+        {/* Banner Area: Larger mobile presentation (aspect-[4/3] to aspect-[16/9] responsive) so image is bigger with full presence */}
+        <div className="relative w-full aspect-[4/3] xs:aspect-[16/10] sm:aspect-auto sm:min-h-[75vh] md:min-h-[82vh] lg:min-h-[88vh] xl:min-h-[92vh] flex flex-col justify-end">
+          <Image
+            src="/hero.webp"
+            alt="X1 Power by Bushra Impex - Powering The Backbone of India"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover sm:object-cover object-center"
+          />
 
-        {/* Bottom gradient — only for button legibility */}
-        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 lg:h-44 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
+          {/* Desktop CTA Buttons — Apple Liquid Glass */}
+          <div className="hidden sm:flex relative z-10 w-full justify-center pb-8 lg:pb-10 px-6 items-center gap-3.5">
+            {/* Primary Action — Apple Ruby Liquid Glass */}
+            <Link
+              href="/dealer"
+              className="group relative inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all duration-300"
+              style={{
+                background: "linear-gradient(180deg, rgba(235, 30, 40, 0.95) 0%, rgba(215, 25, 32, 0.90) 50%, rgba(180, 15, 22, 0.95) 100%)",
+                backdropFilter: "blur(20px) saturate(190%) contrast(105%)",
+                WebkitBackdropFilter: "blur(20px) saturate(190%) contrast(105%)",
+                border: "1px solid #111111",
+                boxShadow: "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35), 0 6px 20px -2px rgba(215, 25, 32, 0.4)",
+              }}
+            >
+              {/* Apple Liquid Glass Meniscus / Top Arc Glare */}
+              <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
+              {/* Dynamic sheen on hover */}
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
 
-        {/* CTA Buttons — responsive: stacked on mobile, row on larger screens */}
-        <div className={
-          "relative z-10 w-full flex justify-center pb-6 sm:pb-8 lg:pb-10 px-4 sm:px-6 " +
-          "flex-col items-center gap-3 sm:flex-row sm:items-center"
-        }>
+              <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] flex items-center gap-2">
+                <span>Become a Dealer</span>
+                <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </Link>
+
+            {/* Secondary Action — Apple Crystal Liquid Glass */}
+            <a
+              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-2 px-7 py-3 rounded-full text-black text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all duration-300"
+              style={{
+                background: "linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(245, 245, 248, 0.85) 50%, rgba(230, 230, 235, 0.90) 100%)",
+                backdropFilter: "blur(20px) saturate(190%) contrast(105%)",
+                WebkitBackdropFilter: "blur(20px) saturate(190%) contrast(105%)",
+                border: "1px solid #111111",
+                boxShadow: "inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.12), 0 6px 18px -2px rgba(0, 0, 0, 0.12)",
+              }}
+            >
+              {/* Apple Liquid Glass Meniscus / Top Arc Glare */}
+              <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/70 to-transparent pointer-events-none" />
+              {/* Dynamic sheen on hover */}
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
+
+              <span className="relative z-10 flex items-center gap-2">
+                <Download className="w-3.5 h-3.5 text-black group-hover:-translate-y-0.5 transition-transform" />
+                <span>Download Catalogue</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Mobile CTA Buttons — Apple Liquid Glass */}
+        <div className="flex sm:hidden items-center justify-center gap-2.5 px-4 py-2.5 bg-[var(--bg-primary)] border-b border-[var(--border-color)]">
           <Link
             href="/dealer"
-            className={
-              "w-full sm:w-auto text-center " +
-              "px-6 sm:px-7 py-3 sm:py-3.5 rounded-full " +
-              "bg-white text-black text-[11px] sm:text-[12px] font-bold uppercase tracking-widest " +
-              "hover:bg-neutral-100 active:scale-95 transition-all shadow-lg"
-            }
+            className="group relative flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-white text-[11px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all text-center whitespace-nowrap"
+            style={{
+              background: "linear-gradient(180deg, rgba(235, 30, 40, 0.95) 0%, rgba(215, 25, 32, 0.90) 50%, rgba(180, 15, 22, 0.95) 100%)",
+              backdropFilter: "blur(20px) saturate(190%)",
+              WebkitBackdropFilter: "blur(20px) saturate(190%)",
+              border: "1px solid #111111",
+              boxShadow: "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35), 0 4px 14px -2px rgba(215, 25, 32, 0.35)",
+            }}
           >
-            Become a Dealer
+            <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
+            <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] flex items-center gap-1">
+              <span>Become a Dealer</span>
+              <ArrowRight className="w-3 h-3 text-white" />
+            </span>
           </Link>
           <a
             href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className={
-              "w-full sm:w-auto text-center " +
-              "px-6 sm:px-7 py-3 sm:py-3.5 rounded-full " +
-              "border border-white text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest " +
-              "hover:bg-white/20 active:scale-95 transition-all"
-            }
+            className="group relative flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-black text-[11px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all text-center whitespace-nowrap"
+            style={{
+              background: "linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(245, 245, 248, 0.85) 50%, rgba(230, 230, 235, 0.90) 100%)",
+              backdropFilter: "blur(20px) saturate(190%)",
+              WebkitBackdropFilter: "blur(20px) saturate(190%)",
+              border: "1px solid #111111",
+              boxShadow: "inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.12), 0 4px 14px -2px rgba(0, 0, 0, 0.1)",
+            }}
           >
-            Download Catalogue
+            <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/70 to-transparent pointer-events-none" />
+            <span className="relative z-10 flex items-center gap-1">
+              <Download className="w-3 h-3 text-black" />
+              <span>Catalogue</span>
+            </span>
           </a>
         </div>
-
       </section>
 
       {/* â”€â”€ TRUST STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
@@ -568,37 +621,4 @@ export default function HomePage() {
     </>
   );
 }
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] lg:min-h-[92vh] flex flex-col justify-end pb-12 sm:pb-16 overflow-hidden bg-white dark:bg-black">
-        {/* Hero Background Image - object-cover fills fully, white/black bg for any gap */}
-        <Image
-          src="/hero.webp"
-          alt="X1 Power by Bushra Impex - Powering The Backbone of India"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
 
-        {/* Subtle bottom gradient for button readability only */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-
-        {/* CTA Buttons only — centered at bottom */}
-        <div className="relative z-10 w-full flex flex-wrap justify-center gap-3 pb-2">
-          <Link
-            href="/dealer"
-            className="px-7 py-3 rounded-full bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-neutral-100 transition-all shadow-lg"
-          >
-            Become a Dealer
-          </Link>
-          <a
-            href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
-            className="px-7 py-3 rounded-full border border-white text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
-          >
-            Download Catalogue
-          </a>
-        </div>
-
-      </section>
-
-      
