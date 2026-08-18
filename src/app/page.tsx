@@ -99,95 +99,47 @@ export default function HomePage() {
             className="object-cover sm:object-cover object-center"
           />
 
-          {/* Desktop CTA Buttons — Apple Liquid Glass */}
-          <div className="hidden sm:flex relative z-10 w-full justify-center pb-8 lg:pb-10 px-6 items-center gap-3.5">
-            {/* Primary Action — Apple Ruby Liquid Glass */}
+          {/* Desktop CTA Buttons — Minimalist Apple Aesthetic */}
+          <div className="hidden sm:flex relative z-10 w-full justify-center pb-8 lg:pb-10 px-6 items-center gap-3">
+            {/* Primary Action — Minimalist Solid Red Pill */}
             <Link
               href="/dealer"
-              className="group relative inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all duration-300"
-              style={{
-                background: "linear-gradient(180deg, rgba(235, 30, 40, 0.95) 0%, rgba(215, 25, 32, 0.90) 50%, rgba(180, 15, 22, 0.95) 100%)",
-                backdropFilter: "blur(20px) saturate(190%) contrast(105%)",
-                WebkitBackdropFilter: "blur(20px) saturate(190%) contrast(105%)",
-                border: "1px solid #111111",
-                boxShadow: "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35), 0 6px 20px -2px rgba(215, 25, 32, 0.4)",
-              }}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#D71920] hover:bg-[#b01419] text-white text-[12px] font-medium tracking-wide shadow-sm hover:shadow active:scale-[0.98] transition-all duration-200"
             >
-              {/* Apple Liquid Glass Meniscus / Top Arc Glare */}
-              <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
-              {/* Dynamic sheen on hover */}
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
-
-              <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] flex items-center gap-2">
-                <span>Become a Dealer</span>
-                <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform" />
-              </span>
+              <span>Become a Dealer</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Secondary Action — Apple Crystal Liquid Glass */}
+            {/* Secondary Action — Minimalist Frosted Pill */}
             <a
               href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 px-7 py-3 rounded-full text-black text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all duration-300"
-              style={{
-                background: "linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(245, 245, 248, 0.85) 50%, rgba(230, 230, 235, 0.90) 100%)",
-                backdropFilter: "blur(20px) saturate(190%) contrast(105%)",
-                WebkitBackdropFilter: "blur(20px) saturate(190%) contrast(105%)",
-                border: "1px solid #111111",
-                boxShadow: "inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.12), 0 6px 18px -2px rgba(0, 0, 0, 0.12)",
-              }}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/90 hover:bg-white text-neutral-900 border border-neutral-200/80 dark:border-neutral-700/60 dark:bg-neutral-900/80 dark:hover:bg-neutral-900 dark:text-white text-[12px] font-medium tracking-wide backdrop-blur-md shadow-sm hover:shadow active:scale-[0.98] transition-all duration-200"
             >
-              {/* Apple Liquid Glass Meniscus / Top Arc Glare */}
-              <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/70 to-transparent pointer-events-none" />
-              {/* Dynamic sheen on hover */}
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
-
-              <span className="relative z-10 flex items-center gap-2">
-                <Download className="w-3.5 h-3.5 text-black group-hover:-translate-y-0.5 transition-transform" />
-                <span>Download Catalogue</span>
-              </span>
+              <Download className="w-3.5 h-3.5 opacity-75" />
+              <span>Download Catalogue</span>
             </a>
           </div>
         </div>
 
-        {/* Mobile CTA Buttons — Apple Liquid Glass */}
-        <div className="flex sm:hidden items-center justify-center gap-2.5 px-4 py-2.5 bg-[var(--bg-primary)] border-b border-[var(--border-color)]">
+        {/* Mobile CTA Buttons — Minimalist Apple Aesthetic */}
+        <div className="flex sm:hidden items-center justify-center gap-2.5 px-4 py-3 bg-[var(--bg-primary)] border-b border-[var(--border-color)]">
           <Link
             href="/dealer"
-            className="group relative flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-white text-[11px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all text-center whitespace-nowrap"
-            style={{
-              background: "linear-gradient(180deg, rgba(235, 30, 40, 0.95) 0%, rgba(215, 25, 32, 0.90) 50%, rgba(180, 15, 22, 0.95) 100%)",
-              backdropFilter: "blur(20px) saturate(190%)",
-              WebkitBackdropFilter: "blur(20px) saturate(190%)",
-              border: "1px solid #111111",
-              boxShadow: "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35), 0 4px 14px -2px rgba(215, 25, 32, 0.35)",
-            }}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full bg-[#D71920] hover:bg-[#b01419] text-white text-[11px] font-medium tracking-wide text-center whitespace-nowrap active:scale-[0.98] transition-all duration-200"
           >
-            <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none" />
-            <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] flex items-center gap-1">
-              <span>Become a Dealer</span>
-              <ArrowRight className="w-3 h-3 text-white" />
-            </span>
+            <span>Become a Dealer</span>
+            <ArrowRight className="w-3 h-3" />
           </Link>
           <a
             href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-black text-[11px] font-semibold uppercase tracking-wider overflow-hidden active:scale-95 transition-all text-center whitespace-nowrap"
-            style={{
-              background: "linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(245, 245, 248, 0.85) 50%, rgba(230, 230, 235, 0.90) 100%)",
-              backdropFilter: "blur(20px) saturate(190%)",
-              WebkitBackdropFilter: "blur(20px) saturate(190%)",
-              border: "1px solid #111111",
-              boxShadow: "inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.12), 0 4px 14px -2px rgba(0, 0, 0, 0.1)",
-            }}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] text-[var(--text-primary)] border border-[var(--border-color)] text-[11px] font-medium tracking-wide text-center whitespace-nowrap active:scale-[0.98] transition-all duration-200"
           >
-            <span className="absolute inset-x-2 top-0.5 h-[46%] rounded-full bg-gradient-to-b from-white/70 to-transparent pointer-events-none" />
-            <span className="relative z-10 flex items-center gap-1">
-              <Download className="w-3 h-3 text-black" />
-              <span>Catalogue</span>
-            </span>
+            <Download className="w-3 h-3 opacity-75" />
+            <span>Catalogue</span>
           </a>
         </div>
       </section>
