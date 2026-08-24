@@ -96,6 +96,14 @@ export const metadata: Metadata = {
       "FMTTI-tested, ISO 9001 certified agricultural machinery. 500+ dealers across India.",
     images: ["https://bushraimpex.com/images/bushraimpex-new%20logo.png"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon-main.png", type: "image/png" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon-main.png",
+    apple: "/favicon-main.png",
+  },
 };
 
 // ─── Global JSON-LD schemas ─────────────────────────────────────
