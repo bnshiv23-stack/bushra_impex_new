@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '',                   priority: 1.0,  freq: 'weekly'  },
     { route: '/products',          priority: 0.95, freq: 'weekly'  },
     { route: '/about',             priority: 0.85, freq: 'monthly' },
+    { route: '/connect',           priority: 0.90, freq: 'weekly'  },
     { route: '/dealer',            priority: 0.85, freq: 'monthly' },
     { route: '/contact',           priority: 0.80, freq: 'monthly' },
     { route: '/company-overview',  priority: 0.75, freq: 'monthly' },

@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "generate:qr": "node scripts/generate-forever-qr.js",
+        "build": "node scripts/generate-forever-qr.js && next build",
         "pages:build": "npx @opennextjs/cloudflare build",
         "start": "next start",
         "lint": "eslint",
@@ -30,11 +31,13 @@
         "@opennextjs/cloudflare": "^1.20.2",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
+        "@types/qrcode": "^1.5.6",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "babel-plugin-react-compiler": "1.0.0",
         "eslint": "^9",
         "eslint-config-next": "16.2.10",
+        "qrcode": "^1.5.4",
         "tailwindcss": "^4",
         "typescript": "^5",
         "wrangler": "^4.123.0"
