@@ -7,7 +7,6 @@ export interface ContactData {
   fullName: string;
   organization: string;
   title: string;
-  phones: { type: string; number: string; pref?: boolean }[];
   emails: { type: string; address: string; pref?: boolean }[];
   urls: { type: string; url: string }[];
   address: {
@@ -24,10 +23,6 @@ export const DEFAULT_COMPANY_CONTACT: ContactData = {
   fullName: "Bushra Impex - X1 Power",
   organization: "Bushra Impex / X1 Power Agricultural Machinery",
   title: "Official Agricultural Equipment & Machinery",
-  phones: [
-    { type: "CELL,VOICE", number: "+91 76248 69606", pref: true },
-    { type: "WORK,VOICE", number: "080 41503394" },
-  ],
   emails: [
     { type: "WORK,INTERNET", address: "bushrapowertools@gmail.com", pref: true },
   ],
@@ -47,10 +42,6 @@ export const DEFAULT_COMPANY_CONTACT: ContactData = {
 };
 
 export function generateVCardString(contact: ContactData = DEFAULT_COMPANY_CONTACT): string {
-  const phoneLines = (contact.phones || [])
-    .map((p) => `TEL;TYPE=${p.type}${p.pref ? ",PREF" : ""}:${p.number}`)
-    .join("\r\n");
-
   const emailLines = (contact.emails || [])
     .map((e) => `EMAIL;TYPE=${e.type}${e.pref ? ",PREF" : ""}:${e.address}`)
     .join("\r\n");
@@ -70,7 +61,6 @@ export function generateVCardString(contact: ContactData = DEFAULT_COMPANY_CONTA
     `FN:${contact.fullName}`,
     `ORG:${contact.organization}`,
     `TITLE:${contact.title}`,
-    phoneLines,
     emailLines,
     urlLines,
     addressLine,
