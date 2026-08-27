@@ -7,6 +7,7 @@ export interface ContactData {
   fullName: string;
   organization: string;
   title: string;
+  phones: { type: string; number: string; pref?: boolean }[];
   emails: { type: string; address: string; pref?: boolean }[];
   urls: { type: string; url: string }[];
   address: {
@@ -23,12 +24,16 @@ export const DEFAULT_COMPANY_CONTACT: ContactData = {
   fullName: "Bushra Impex - X1 Power",
   organization: "Bushra Impex / X1 Power Agricultural Machinery",
   title: "Official Agricultural Equipment & Machinery",
+  phones: [
+    { type: "CELL,VOICE", number: "+91 76248 69606", pref: true },
+    { type: "WORK,VOICE", number: "080 41503394" },
+  ],
   emails: [
     { type: "WORK,INTERNET", address: "bushrapowertools@gmail.com", pref: true },
   ],
   urls: [
-    { type: "BushraImpex", url: "https://bushraimpex.com" },
-    { type: "X1Power", url: "https://x1power.in" },
+    { type: "WORK", url: "https://bushraimpex.com" },
+    { type: "WORK", url: "https://x1power.in" },
     { type: "Connect", url: "https://bushraimpex.com/connect" },
   ],
   address: {
@@ -42,25 +47,30 @@ export const DEFAULT_COMPANY_CONTACT: ContactData = {
 };
 
 export function generateVCardString(contact: ContactData = DEFAULT_COMPANY_CONTACT): string {
-  const emailLines = contact.emails
+  const phoneLines = (contact.phones || [])
+    .map((p) => `TEL;TYPE=${p.type}${p.pref ? ",PREF" : ""}:${p.number}`)
+    .join("\r\n");
+
+  const emailLines = (contact.emails || [])
     .map((e) => `EMAIL;TYPE=${e.type}${e.pref ? ",PREF" : ""}:${e.address}`)
     .join("\r\n");
 
-  const urlLines = contact.urls
+  const urlLines = (contact.urls || [])
     .map((u) => `URL;TYPE=${u.type}:${u.url}`)
     .join("\r\n");
 
   const adr = contact.address;
-  const addressLine = `ADR;TYPE=WORK,PREF:;;${adr.street};${adr.city};${adr.region};${adr.postalCode};${adr.country}`;
+  const addressLine = `ADR;TYPE=WORK,POSTAL,PARCEL,PREF:;;${adr.street};${adr.city};${adr.region};${adr.postalCode};${adr.country}`;
   const labelLine = `LABEL;TYPE=WORK,PREF:${adr.street}\\n${adr.city}, ${adr.region} - ${adr.postalCode}\\n${adr.country}`;
 
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
-    "N:Power;X1;;;",
+    "N:Power;Bushra Impex & X1;;;",
     `FN:${contact.fullName}`,
     `ORG:${contact.organization}`,
     `TITLE:${contact.title}`,
+    phoneLines,
     emailLines,
     urlLines,
     addressLine,
@@ -68,10 +78,23 @@ export function generateVCardString(contact: ContactData = DEFAULT_COMPANY_CONTA
     `NOTE:${contact.note}`,
     `REV:${new Date().toISOString()}`,
     "END:VCARD",
-  ].join("\r\n");
+  ]
+    .filter(Boolean)
+    .join("\r\n");
 }
 
 export function downloadVCard(filename = "Bushra_Impex_X1_Power.vcf", contact = DEFAULT_COMPANY_CONTACT) {
+  if (typeof window === "undefined") return;
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isIOS) {
+    // On iOS Safari, navigating directly to the .vcf endpoint triggers the native Add Contact sheet
+    window.location.href = "/contact.vcf";
+    return;
+  }
+
   const vcard = generateVCardString(contact);
   const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -81,5 +104,5 @@ export function downloadVCard(filename = "Bushra_Impex_X1_Power.vcf", contact = 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
 }

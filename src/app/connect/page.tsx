@@ -190,22 +190,22 @@ export default function ConnectPage() {
                     href="mailto:bushrapowertools@gmail.com?subject=Enquiry%20from%20Connect%20Page"
                     className="btn-primary inline-flex items-center justify-center gap-2.5 text-[11px]"
                   >
-                    <Mail className="w-4 h-4 fill-white shrink-0" />
+                    <Mail className="w-4 h-4 text-white stroke-[2] shrink-0" />
                     <span>EMAIL</span>
                   </a>
 
-                  {/* SAVE CONTACT */}
-                  <button
-                    type="button"
+                  {/* SAVE CONTACT (iPhone & Android Compatible) */}
+                  <a
+                    href="/contact.vcf"
+                    download="Bushra_Impex_X1_Power.vcf"
                     onClick={() => {
-                      downloadVCard();
-                      triggerToast("Contact vCard saved to downloads!");
+                      triggerToast("Opening contact card...");
                     }}
                     className="btn-outline inline-flex items-center justify-center gap-2 text-[11px]"
                   >
-                    <IdCard className="w-4 h-4 text-[#D71920]" />
+                    <IdCard className="w-4 h-4 text-[#D71920] stroke-[1.8]" />
                     <span>SAVE CONTACT CARD</span>
-                  </button>
+                  </a>
 
                 </div>
 
