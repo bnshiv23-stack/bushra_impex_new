@@ -2,6 +2,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
+import { homedir } from "os";
 
 export default function NotFound() {
   return (
@@ -37,10 +38,10 @@ export default function NotFound() {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
             {[
               { label: "Power Weeders", href: "/products?category=weeders" },
-              { label: "Chainsaws",     href: "/products?category=chainsaws" },
+              { label: "Chainsaws", href: "/products?category=chainsaws" },
               { label: "Chaff Cutters", href: "/products?category=chaff-cutters" },
               { label: "Dealer Network", href: "/dealer" },
-              { label: "Contact",        href: "/contact" },
+              { label: "Contact", href: "/contact" },
             ].map((l) => (
               <Link
                 key={l.href}

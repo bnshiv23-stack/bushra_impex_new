@@ -295,8 +295,8 @@ export default function ConnectPage() {
               <div className="flex-1 h-px bg-[var(--border-color)]" />
             </div>
 
-            {/* 6 Card Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+            {/* 8 Card Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
 
               {/* 1. Bushra Impex Website */}
               <a
@@ -361,8 +361,46 @@ export default function ConnectPage() {
                 </span>
                 <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Direct Mail Support</span>
               </a>
+              
+              {/* 5. Instagram */}
+              <a
+                href="https://www.instagram.com/bushraimpex_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
+              >
+                <div className="w-12 h-12 mb-3 flex items-center justify-center text-[var(--text-secondary)] group-hover:text-[#E1306C] transition-colors">
+                  <svg className="w-6 h-6 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" strokeLinecap="round" strokeWidth="2.5" />
+                  </svg>
+                </div>
+                <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[#E1306C] transition-colors">
+                  Instagram
+                </span>
+                <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">@bushraimpex_</span>
+              </a>
 
-              {/* 5. Bengaluru Map */}
+              {/* 6. Facebook */}
+              <a
+                href="https://www.facebook.com/people/Bushra-IMPEX/100063715104684/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
+              >
+                <div className="w-12 h-12 mb-3 flex items-center justify-center text-[var(--text-secondary)] group-hover:text-[#1877F2] transition-colors">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </div>
+                <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[#1877F2] transition-colors">
+                  Facebook
+                </span>
+                <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Official Page</span>
+              </a>
+
+              {/* 7. Bengaluru Map */}
               <button
                 type="button"
                 onClick={() => {
@@ -380,7 +418,7 @@ export default function ConnectPage() {
                 <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Google Maps Pin</span>
               </button>
 
-              {/* 6. Saharanpur Map */}
+              {/* 8. Saharanpur Map */}
               <button
                 type="button"
                 onClick={() => {
