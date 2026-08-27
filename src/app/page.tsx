@@ -112,7 +112,7 @@ export default function HomePage() {
 
             {/* Secondary Action — Minimalist Frosted Pill */}
             <a
-              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/90 hover:bg-white text-neutral-900 border border-neutral-200/80 dark:border-neutral-700/60 dark:bg-neutral-900/80 dark:hover:bg-neutral-900 dark:text-white text-[12px] font-medium tracking-wide backdrop-blur-md shadow-sm hover:shadow active:scale-[0.98] transition-all duration-200"
@@ -133,7 +133,7 @@ export default function HomePage() {
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <a
-            href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full max-w-[280px] inline-flex items-center justify-center gap-2 py-2.5 px-6 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] text-[var(--text-primary)] border border-[var(--border-color)] text-[12px] font-medium tracking-wide text-center active:scale-[0.98] transition-all duration-200"
@@ -561,7 +561,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 border border-neutral-700 text-white font-bold uppercase tracking-widest text-[11px] px-7 py-3.5 hover:border-white transition-colors">
               <Phone className="w-3.5 h-3.5" /> Call Now
             </a>
-            <a href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
+            <a href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-neutral-700 text-white font-bold uppercase tracking-widest text-[11px] px-7 py-3.5 hover:border-white transition-colors">
               <Download className="w-3.5 h-3.5" /> Catalogue
             </a>

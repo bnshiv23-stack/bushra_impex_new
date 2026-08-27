@@ -297,7 +297,7 @@ export default function Navbar() {
               <Phone style={{ width: 14, height: 14 }} /> Call Us
             </a>
             <a
-              href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer"
+              href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing" target="_blank" rel="noopener noreferrer"
               download
               style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, border: "1px solid var(--border-color)", color: "var(--text-primary)", padding: "14px 8px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", textDecoration: "none", borderRadius: 4, background: "transparent" }}
             >

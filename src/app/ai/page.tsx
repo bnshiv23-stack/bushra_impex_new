@@ -111,7 +111,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
   if (type === "catalogue") {
     return (
       <div className="mt-3 border border-[var(--border-color)] space-y-px">
-        <a href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <a href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors">
           <span>X1 Power Full Catalogue</span><span className="text-[var(--text-muted)] text-[11px]">PDF ↓</span>
         </a>
         <Link href="/company-overview" className="flex items-center justify-between px-4 py-2.5 text-[13px] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] transition-colors border-t border-[var(--border-color)]">

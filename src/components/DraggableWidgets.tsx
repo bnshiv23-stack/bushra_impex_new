@@ -128,7 +128,7 @@ function ChatForm({ type, onDone }: { type: "enquiry" | "callback" | "dealer" | 
         
         {/* Master PDF */}
         <a
-          href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-[12px] text-white hover:bg-red-500/20 transition-colors"

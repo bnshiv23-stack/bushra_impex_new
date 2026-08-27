@@ -334,7 +334,7 @@ export default function ConnectPage() {
 
               {/* 3. Product Catalogue */}
               <a
-                href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
@@ -467,7 +467,7 @@ export default function ConnectPage() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href="https://drive.google.com/file/d/1Ut_jmJVbYQqyYQNfa_IzGfel3jNr8Ohf/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/1vahURP1XZpRr-ZApCTdhdKmEkAaaHWAN/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#D71920] hover:bg-[#b01419] text-white text-[11px] font-bold uppercase tracking-widest px-5 py-3 transition-colors inline-flex items-center gap-2 shadow-sm"
