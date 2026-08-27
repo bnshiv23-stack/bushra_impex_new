@@ -283,7 +283,7 @@ export default function ConnectPage() {
           </div>
         </section>
 
-        {/* ─── QUICK LINKS SECTION (8 INDUSTRIAL CARDS) ────────────────── */}
+        {/* ─── QUICK LINKS SECTION (6 INDUSTRIAL CARDS) ────────────────── */}
         <section className="bg-[var(--bg-secondary)] py-12 sm:py-16 border-b border-[var(--border-color)]">
           <div className="container-site">
 
@@ -295,8 +295,8 @@ export default function ConnectPage() {
               <div className="flex-1 h-px bg-[var(--border-color)]" />
             </div>
 
-            {/* 8 Card Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+            {/* 6 Card Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
 
               {/* 1. Bushra Impex Website */}
               <a
@@ -348,21 +348,7 @@ export default function ConnectPage() {
                 <span className="text-[9px] text-[#D71920] font-bold mt-1">PDF Download →</span>
               </a>
 
-              {/* 4. Products Section */}
-              <Link
-                href="/products"
-                className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
-              >
-                <div className="w-12 h-12 mb-3 flex items-center justify-center text-[var(--text-secondary)] group-hover:text-[#D71920] transition-colors">
-                  <Package className="w-6 h-6 stroke-[1.5]" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[#D71920] transition-colors">
-                  All Products
-                </span>
-                <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Full Machinery Range</span>
-              </Link>
-
-              {/* 5. Email Us */}
+              {/* 4. Email Us */}
               <a
                 href="mailto:bushrapowertools@gmail.com?subject=Enquiry%20via%20Connect%20Page"
                 className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
@@ -376,7 +362,7 @@ export default function ConnectPage() {
                 <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Direct Mail Support</span>
               </a>
 
-              {/* 6. Bengaluru Map */}
+              {/* 5. Bengaluru Map */}
               <button
                 type="button"
                 onClick={() => {
@@ -394,7 +380,7 @@ export default function ConnectPage() {
                 <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Google Maps Pin</span>
               </button>
 
-              {/* 7. Saharanpur Map */}
+              {/* 6. Saharanpur Map */}
               <button
                 type="button"
                 onClick={() => {
@@ -410,21 +396,6 @@ export default function ConnectPage() {
                   Saharanpur Branch
                 </span>
                 <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">UP Location &amp; Directions</span>
-              </button>
-
-              {/* 8. Share Page */}
-              <button
-                type="button"
-                onClick={handleShare}
-                className="product-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
-              >
-                <div className="w-12 h-12 mb-3 flex items-center justify-center text-[var(--text-secondary)] group-hover:text-[#D71920] transition-colors">
-                  <Share2 className="w-6 h-6 stroke-[1.5]" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[#D71920] transition-colors">
-                  Share Page
-                </span>
-                <span className="text-[9px] text-[var(--text-muted)] font-medium mt-1">Copy Link / Share</span>
               </button>
 
             </div>
@@ -744,7 +715,7 @@ export default function ConnectPage() {
                   ) : (
                     <>
                       <a
-                        href="https://www.google.com/maps/dir/?api=1&destination=Ambala+Road+Near+Badi+Nahar+Saharanpur+Uttar+Pradesh"
+                        href="https://www.google.com/maps/dir/?api=1&destination=29.976000,77.508806"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary flex-1 justify-center text-[10px] inline-flex items-center gap-2"
@@ -779,24 +750,16 @@ export default function ConnectPage() {
                     title="X1 Power Official Bengaluru Google Map"
                   />
                 ) : (
-                  <div className="w-full h-full min-h-[400px] flex flex-col items-center justify-center p-8 text-center bg-[var(--bg-secondary)]">
-                    <MapPin className="w-12 h-12 text-[#D71920] mb-3 stroke-[1.5]" />
-                    <h4 className="font-bebas text-[24px] text-[var(--text-primary)] tracking-tight mb-2">
-                      Saharanpur Branch Map &amp; Route
-                    </h4>
-                    <p className="text-[13px] text-[var(--text-secondary)] max-w-[360px] mb-6 leading-relaxed">
-                      Plot No 87-88, Gurudev Nagar, Ambala Road, Near Badi Nahar, Saharanpur – 247001, Uttar Pradesh.
-                    </p>
-                    <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=Ambala+Road+Near+Badi+Nahar+Saharanpur+Uttar+Pradesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary inline-flex items-center gap-2 text-[10px]"
-                    >
-                      <Navigation className="w-3.5 h-3.5 fill-white" />
-                      <span>Open in Google Maps App →</span>
-                    </a>
-                  </div>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d1047.9111104405504!2d77.50853674670502!3d29.976786745259922!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzMzLjYiTiA3N8KwMzAnMzEuNyJF!5e1!3m2!1sen!2sin!4v1787813149616!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    className="w-full h-full min-h-[400px] border-0"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="Bushra Impex Official Saharanpur Google Map"
+                  />
                 )}
               </div>
 
