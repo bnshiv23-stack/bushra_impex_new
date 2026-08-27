@@ -4,6 +4,7 @@
   "name": "bushra-impex-new-2",
   "compatibility_date": "2026-08-15",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
@@ -11,6 +12,12 @@
   "browser": {
     "binding": "BROWSER"
   },
+  "routes": [
+    { "pattern": "bushraimpex.com", "custom_domain": true },
+    { "pattern": "www.bushraimpex.com", "custom_domain": true },
+    { "pattern": "x1power.in", "custom_domain": true },
+    { "pattern": "www.x1power.in", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
