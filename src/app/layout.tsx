@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Sora, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -217,6 +218,20 @@ export default function RootLayout({
       className={`${inter.variable} ${sora.variable} ${bebasNeue.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-[#D71920] selection:text-white transition-colors duration-300">
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BNS1DDH1N8"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BNS1DDH1N8');
+          `}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
