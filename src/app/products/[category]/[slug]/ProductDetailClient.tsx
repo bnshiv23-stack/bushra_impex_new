@@ -187,38 +187,42 @@ export default function ProductDetailClient({
   async function handleDownloadBrochure() {
     if (!product) return;
     setIsGeneratingPDF(true);
-    
+
+    const safeSlug = product.slug.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filename = `X1_Power_${safeSlug}_Brochure.pdf`;
+    const pdfApiUrl = `/api/pdf/product?slug=${encodeURIComponent(product.slug)}&category=${encodeURIComponent(product.category)}`;
+    const printUrl = `/products/${encodeURIComponent(product.category)}/${encodeURIComponent(product.slug)}?print=true`;
+
     // Check if on iOS / Safari / Chrome iOS
     const isIOS = typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
-    const printUrl = `/products/${product.category}/${product.slug}?print=true`;
-
-    if (isIOS) {
-      // On iOS Safari and Chrome iOS, window.open inside async callback is blocked.
-      // Direct navigation to print mode triggers the native PDF / Print preview sheet reliably.
-      window.open(printUrl, "_blank", "noopener,noreferrer");
-      setIsGeneratingPDF(false);
-      return;
-    }
 
     try {
-      const res = await fetch(`/api/pdf/product?slug=${product.slug}&category=${product.category}`);
-      const contentType = res.headers.get("content-type") || "";
+      // Direct download via Cloudflare API if available
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-      // If we got a valid PDF back from Cloudflare Pages Function
-      if (res.ok && contentType.includes("application/pdf")) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
+      const res = await fetch(pdfApiUrl, { method: "HEAD", signal: controller.signal }).catch(() => null);
+      clearTimeout(timeoutId);
+
+      if (res && res.ok && (res.headers.get("content-type") || "").includes("application/pdf")) {
         const a = document.createElement("a");
-        a.href = url;
-        a.download = `X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`;
+        a.href = pdfApiUrl;
+        a.download = filename;
+        a.target = "_blank";
         document.body.appendChild(a);
         a.click();
         a.remove();
-        URL.revokeObjectURL(url);
+        setIsGeneratingPDF(false);
         return;
       }
+    } catch {
+      // If API check fails, fallback smoothly to the optimized print brochure view
+    }
 
-      // Fallback: open print view
+    // Fallback: open print view (iOS navigates in current tab to prevent popup blocker suppression)
+    if (isIOS) {
+      window.location.href = printUrl;
+    } else {
       const printWin = window.open(printUrl, "_blank");
       if (printWin) {
         printWin.addEventListener("load", () => {
@@ -226,13 +230,11 @@ export default function ProductDetailClient({
             printWin.print();
           }, 600);
         });
+      } else {
+        window.location.href = printUrl;
       }
-    } catch (err) {
-      console.error(err);
-      window.open(printUrl, "_blank", "noopener,noreferrer");
-    } finally {
-      setIsGeneratingPDF(false);
     }
+    setIsGeneratingPDF(false);
   }
   const { add: addToCompare, remove: removeFromCompare, has: isInCompare } = useCompare();
 
@@ -547,12 +549,12 @@ export default function ProductDetailClient({
                 </p>
                 {product.accessories.length > 0 ? (
                   /* Always try to render image grid using the new global map */
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
                     {product.accessories.map((acc, i) => {
                       const imgSrc = getAccessoryImage(acc, product.accessoryImages);
                       return (
-                        <div key={i} className="border border-[var(--border-color)] bg-[var(--bg-primary)] flex flex-col">
-                          <div className="aspect-square relative bg-[var(--bg-secondary)] border-b border-[var(--border-color)] overflow-hidden flex">
+                        <div key={i} className="border border-[var(--border-color)] bg-[var(--bg-primary)] flex flex-col min-w-0 overflow-hidden">
+                          <div className="w-full aspect-square relative bg-[var(--bg-secondary)] border-b border-[var(--border-color)] overflow-hidden flex items-center justify-center">
                             {imgSrc ? (
                               <ProductImageZoom imageUrl={imgSrc} altText={acc} />
                             ) : (
@@ -561,9 +563,9 @@ export default function ProductDetailClient({
                               </div>
                             )}
                           </div>
-                          <div className="px-4 py-3 flex items-center gap-2">
+                          <div className="px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2 min-w-0">
                             <span className="w-1.5 h-1.5 bg-[#D71920] shrink-0" />
-                            <span className="text-[11px] font-bold text-[var(--text-secondary)] uppercase tracking-wide leading-tight">{acc}</span>
+                            <span className="text-[10px] sm:text-[11px] font-bold text-[var(--text-secondary)] uppercase tracking-wide leading-tight break-words min-w-0">{acc}</span>
                           </div>
                         </div>
                       );
@@ -664,7 +666,7 @@ export default function ProductDetailClient({
                   {/* Dealer */}
                   <FaqBlock
                     q={`Where can I buy the ${product.name} in India?`}
-                    a={`The ${product.name} is available through the authorised X1 Power dealer network operated by Bushra Impex — 500+ dealers across all 29 Indian states. Contact Bushra Impex at +91-76248-69606 or visit bushraimpex.com to find your nearest dealer.`}
+                    a={`The ${product.name} is available through the authorised X1 Power dealer network operated by Bushra Impex — 1300+ dealers across all 29 Indian states. Contact Bushra Impex at +91-76248-69606 or visit bushraimpex.com to find your nearest dealer.`}
                   />
                   {/* Warranty */}
                   <FaqBlock

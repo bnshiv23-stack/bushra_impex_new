@@ -6,7 +6,7 @@ import ProfileViewer from "./ProfileViewer";
 export const metadata: Metadata = {
   title: "Company Profile & Overview | Bushra Impex — X1 Power",
   description:
-    "Official Bushra Impex corporate overview and company profile presentation. Est. 2012, Bengaluru. Discover our journey, manufacturing vision, FMTTI certifications, and 500+ dealer network.",
+    "Official Bushra Impex corporate overview and company profile presentation. Est. 2012, Bengaluru. Discover our journey, manufacturing vision, FMTTI certifications, and 1300+ dealer network.",
   keywords: [
     "Bushra Impex company profile", "X1 Power presentation", "Bushra Impex overview",
     "agricultural machinery manufacturer profile", "FMTTI certified company India",

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight, ChevronDown, Check, Mail } from "lucide-react";
 
 const BENEFITS = [
-  { num: "01", title: "Premium Product Range", desc: "Over 100 FMTTI tested agricultural machines across 10 categories. High demand across India." },
+  { num: "01", title: "Premium Product Range", desc: "Over 100+ FMTTI tested agricultural machines across 10 categories. High demand across India." },
   { num: "02", title: "Marketing Support", desc: "Ready-made dealer brochures, social media creatives, banners and exhibition materials at no cost." },
   { num: "03", title: "Technical Training", desc: "Regular on-site product training sessions and demo field runs for your team and service staff." },
   { num: "04", title: "Reliable Supply Chain", desc: "North and South India stock hubs ensure fast delivery even to remote districts." },
@@ -99,14 +99,16 @@ export default function DealerPage() {
           {/* Stats */}
           <div className="grid grid-cols-2 divide-x divide-y divide-[var(--border-color)]">
             {[
-              { num: "500+", label: "Dealers" },
+              { num: "1300+", label: "Dealers" },
               { num: "29",  label: "States" },
-              { num: "100%", label: "Support" },
-              { num: "10+",  label: "Categories" },
+              { num: "100+", label: "Products" },
+              { num: "5 Lakh+", label: "Machines Sold" },
+              { num: "15+ Yrs", label: "Industry Trust" },
+              { num: "ISO & FMTTI", label: "Certified & Trusted" },
             ].map((s) => (
-              <div key={s.label} className="flex flex-col items-center justify-center p-8 gap-1.5">
-                <span className="font-bebas text-[40px] text-[var(--text-primary)] leading-none">{s.num}</span>
-                <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-[var(--text-muted)]">{s.label}</span>
+              <div key={s.label} className="flex flex-col items-center justify-center p-6 gap-1.5">
+                <span className="font-bebas text-[36px] text-[var(--text-primary)] leading-none">{s.num}</span>
+                <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-[var(--text-muted)] text-center">{s.label}</span>
               </div>
             ))}
           </div>
@@ -172,7 +174,7 @@ export default function DealerPage() {
           <div className="relative w-full max-w-4xl mx-auto">
             <Image
               src="/images/dealer-network-map.jpg"
-              alt="X1 Power Dealer Network Across India — 500+ Dealers in all 29 States"
+              alt="X1 Power Dealer Network Across India — 1300+ Dealers in all 29 States"
               width={1080}
               height={1080}
               className="w-full h-auto object-contain"

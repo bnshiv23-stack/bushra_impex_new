@@ -215,7 +215,7 @@ export function respond(userMessage: string): ChatMessage {
     return {
       role: "assistant",
       content:
-        "**Join the 500+ Authorized X1 Power Dealer Network**\n\n" +
+        "**Join the 1300+ Authorized X1 Power Dealer Network**\n\n" +
         "Bushra Impex partners with agricultural machinery dealers across 29 states, providing:\n" +
         "✓ Direct wholesale pricing & high margins\n" +
         "✓ 100% genuine spare parts availability\n" +
@@ -257,8 +257,10 @@ export function respond(userMessage: string): ChatMessage {
       content:
         "**About Bushra Impex & X1 Power**\n\n" +
         "Established in 2012 in Bengaluru, Karnataka, **Bushra Impex** is a premier distributor and wholesaler of heavy-duty farm machinery under the flagship brand **X1 Power**.\n\n" +
-        "• **500+ Active Dealers** across 29 Indian states\n" +
-        "• **5M+ Farmers** empowered with modern mechanization\n" +
+        "• **100+ Products** across 12 categories\n" +
+        "• **1300+ Active Dealers** across 29 Indian states\n" +
+        "• **5 Lakh+ Machines Sold** nationwide\n" +
+        "• **15+ Years** of industry trust & experience\n" +
         "• **FMTTI Tested & ISO 9001:2015** certified\n" +
         "• Complete spares backup and after-sales service network.",
       quickReplies: ["Become a Dealer", "Catalogue Downloads", "View Products", "Contact Us"],

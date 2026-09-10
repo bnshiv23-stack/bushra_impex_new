@@ -4,7 +4,7 @@ import { CATEGORIES } from "@/data/products";
 export const metadata: Metadata = {
   title: "X1 Power Agricultural Machinery | All Products — Bushra Impex",
   description:
-    "Browse the complete X1 Power agricultural machinery range by Bushra Impex: power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers & HTP pumps, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, rice mills. FMTTI tested. 500+ dealers across India.",
+    "Browse the complete X1 Power agricultural machinery range by Bushra Impex: power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers & HTP pumps, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, rice mills. FMTTI tested. 1300+ dealers across India.",
   keywords: [
     "X1 Power machines India", "agricultural machinery catalogue India",
     "power weeder price India", "chainsaw India", "chaff cutter price India",

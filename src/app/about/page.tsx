@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Bushra Impex — X1 Power Agricultural Machinery Brand Story",
   description:
-    "Bushra Impex, founded in Bengaluru in 2012, is India's leading agricultural machinery distributor and the company behind the X1 Power brand. FMTTI tested, ISO 9001:2015 certified. 500+ dealers across all 29 Indian states.",
+    "Bushra Impex, founded in Bengaluru in 2012, is India's leading agricultural machinery distributor and the company behind the X1 Power brand. FMTTI tested, ISO 9001:2015 certified. 1300+ dealers across all 29 Indian states.",
   keywords: [
     "About Bushra Impex", "Bushra Impex history", "X1 Power brand India",
     "Bushra Impex Bengaluru", "agricultural machinery company India",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Bushra Impex — X1 Power Agricultural Machinery",
     description:
-      "Est. 2012, Bengaluru. India's trusted agricultural machinery brand. FMTTI tested, ISO 9001 certified. 500+ PAN India dealers.",
+      "Est. 2012, Bengaluru. India's trusted agricultural machinery brand. FMTTI tested, ISO 9001 certified. 1300+ PAN India dealers.",
     url: "https://bushraimpex.com/about",
     siteName: "Bushra Impex — X1 Power",
     locale: "en_IN",
@@ -58,13 +58,13 @@ const MILESTONES = [
   { year: "2017",  event: "Launched X1 Power as the flagship proprietary brand" },
   { year: "2018",  event: "New warehouse & infrastructure commissioned in North India" },
   { year: "2021",  event: "Government FMTTI testing & approvals secured for Power Weeders" },
-  { year: "2024",  event: "PAN India network — 500+ dealers across all 29 states" },
+  { year: "2024",  event: "PAN India network — 1300+ dealers across all 29 states" },
   { year: "Future", event: "₹250 Crore business vision. Global expansion. Technology-driven growth." },
 ];
 
 const VALUES = [
   { num: "01", title: "Farmer Centric",          desc: "Our products are designed for Indian farm conditions — not imported directly from foreign specs. Local insight drives every design decision." },
-  { num: "02", title: "Reliability Over Marketing", desc: "We invest in product reliability first. Our 500+ dealers and 50,000+ satisfied customers are the result of machines that simply work." },
+  { num: "02", title: "Reliability Over Marketing", desc: "We invest in product reliability first. Our 1300+ dealers and 5 Lakh+ machines sold are the result of machines that simply work." },
   { num: "03", title: "Long-Term Partnership",   desc: "We build multi-year partnerships with our dealers — providing genuine spare parts, training, and technical support throughout." },
   { num: "04", title: "Quality Assured",         desc: "Every X1 Power machine passes stringent quality checks. ISO 9001:2015 certified and FMTTI tested for government approval." },
 ];
@@ -117,14 +117,16 @@ export default function AboutPage() {
           {/* Right: key numbers */}
           <div className="grid grid-cols-2 divide-x divide-y divide-[var(--border-color)]">
             {[
-              { num: "2012", label: "Founded"        },
-              { num: "500+", label: "Dealers"        },
-              { num: "29",  label: "States"         },
-              { num: "50K+", label: "Happy Customers"},
+              { num: "100+", label: "Products" },
+              { num: "1300+", label: "Dealers" },
+              { num: "29", label: "States" },
+              { num: "5 Lakh+", label: "Machines Sold" },
+              { num: "15+ Yrs", label: "Industry Trust" },
+              { num: "ISO & FMTTI", label: "Certified & Trusted" },
             ].map((s) => (
-              <div key={s.label} className="flex flex-col items-center justify-center py-10 gap-1.5">
-                <span className="font-bebas text-[44px] text-[var(--text-primary)] leading-none">{s.num}</span>
-                <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">{s.label}</span>
+              <div key={s.label} className="flex flex-col items-center justify-center py-7 gap-1.5">
+                <span className="font-bebas text-[36px] text-[var(--text-primary)] leading-none">{s.num}</span>
+                <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)] text-center px-2">{s.label}</span>
               </div>
             ))}
           </div>
@@ -207,7 +209,7 @@ export default function AboutPage() {
       <section className="bg-[var(--bg-primary)] border-t border-[var(--border-color)] py-12">
         <div className="container-site">
           <div className="flex flex-wrap gap-px bg-[var(--border-color)]">
-            {["FMTTI Tested & Approved", "ISO 9001:2015 Certified", "Government Subsidy Eligible", "500+ PAN India Dealers"].map((c) => (
+            {["FMTTI Tested & Approved", "ISO 9001:2015 Certified", "Government Subsidy Eligible", "1300+ PAN India Dealers"].map((c) => (
               <div key={c} className="flex-1 min-w-[200px] bg-[var(--bg-primary)] px-8 py-6 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 bg-[#D71920] shrink-0" />
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--text-secondary)]">{c}</span>
@@ -224,7 +226,7 @@ export default function AboutPage() {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D71920] block mb-3">Partner With Us</span>
             <h2 className="font-bebas text-[clamp(36px,5vw,52px)] text-white leading-none">Become an X1 Power Dealer</h2>
             <p className="text-[13px] text-neutral-400 mt-3 max-w-md leading-relaxed">
-              Join our growing network of 500+ dealers and be part of India's agricultural machinery revolution.
+              Join our growing network of 1300+ dealers and be part of India's agricultural machinery revolution.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">

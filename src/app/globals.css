@@ -240,6 +240,7 @@ body {
   /* Product brochure print mode — allow brochure root to show */
   body:has(.print-brochure-root) > * { display: none !important; }
   body:has(.print-brochure-root) .print-brochure-root { display: block !important; }
+  .no-print { display: none !important; }
 
   @page {
     size: A4 portrait;
@@ -247,8 +248,60 @@ body {
   }
 
   .print-brochure-root {
-    width: 210mm;
-    margin: 0;
-    padding: 0;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* ─── IPHONE & MOBILE BROCHURE VIEWING OPTIMIZATIONS ──────────── */
+@media screen and (max-width: 640px) {
+  .print-brochure-root {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .pdf-content-padding {
+    padding: 18px 16px 0 !important;
+  }
+
+  .pdf-header-pad {
+    padding: 20px 16px 16px !important;
+  }
+
+  .pdf-footer-pad {
+    padding: 18px 16px !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .pdf-accessories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .pdf-pictures-flex {
+    flex-direction: column !important;
+  }
+
+  .pdf-picture-main {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .pdf-picture-thumbs {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    flex-direction: row !important;
+  }
+
+  .pdf-picture-thumbs > div {
+    flex: 1 !important;
+    min-height: 70px !important;
   }
 }

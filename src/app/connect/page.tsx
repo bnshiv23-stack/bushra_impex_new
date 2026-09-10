@@ -273,7 +273,7 @@ export default function ConnectPage() {
                       Bushra Impex &amp; X1 Power
                     </span>
                     <span className="text-[#D71920] bg-black/70 px-2 py-0.5 border border-[#D71920]/40">
-                      10+ Years • 29 States
+                      15+ Years • 29 States
                     </span>
                   </div>
                 </div>

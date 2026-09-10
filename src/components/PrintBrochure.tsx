@@ -119,105 +119,189 @@ export default function PrintBrochure({ product }: { product: Product }) {
   const applications = getApplications(product);
 
   return (
-    <div
-      className="print-brochure-root"
-      style={{
-        width: "210mm",
-        margin: "0 auto",
-        fontFamily: "var(--font-sans, 'Inter', sans-serif)",
-        background: "#fff",
-        color: "#111",
-      }}
-    >
-      {/* ══════════════════════════════════════════════════════════════════ */}
-      {/* SECTION 1: BRANDED HEADER                                         */}
-      {/* ══════════════════════════════════════════════════════════════════ */}
+    <>
+      {/* ── Screen-only top action bar for mobile/iPhone users (hidden in print/PDF) ── */}
       <div
-        className="pdf-section"
+        className="no-print"
         style={{
           background: "#111111",
-          color: "#fff",
-          padding: "28px 36px 20px",
+          color: "#ffffff",
+          padding: "10px 16px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "16px",
+          gap: "12px",
+          borderBottom: "2px solid #D71920",
+          position: "sticky",
+          top: 0,
+          zIndex: 9999,
+          boxShadow: "0 2px 10px rgba(0,0,0,0.4)",
         }}
       >
-        <div>
-          <div style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D71920", marginBottom: "6px" }}>
-            Bushra Impex · X1 Power
-          </div>
-          <div style={{ fontFamily: "var(--font-bebas, 'Bebas Neue', sans-serif)", fontSize: "40px", lineHeight: 0.9, letterSpacing: "0.02em", color: "#fff" }}>
-            {product.name}
-          </div>
-          <div style={{ fontSize: "10px", fontWeight: 700, color: "#888", marginTop: "6px", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-            Model: {product.modelCode} · {product.categoryName}
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", minWidth: 0 }}>
+          <a
+            href={`/products/${product.category}/${product.slug}`}
+            style={{
+              color: "#aaa",
+              fontSize: "11px",
+              fontWeight: 700,
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "4px",
+              flexShrink: 0,
+            }}
+          >
+            ← Back
+          </a>
+          <span style={{ width: "1px", height: "14px", background: "#333", flexShrink: 0 }} />
+          <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            {product.modelCode} Brochure
+          </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px" }}>
-          <span style={{ background: "#D71920", color: "#fff", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", padding: "5px 12px" }}>
-            {product.fuelType}
-          </span>
-          <span style={{ fontSize: "8px", color: "#555", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            x1power.in
-          </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+          <a
+            href={`/api/pdf/product?slug=${product.slug}&category=${product.category}`}
+            download={`X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`}
+            style={{
+              background: "#222",
+              color: "#fff",
+              border: "1px solid #444",
+              padding: "6px 12px",
+              fontSize: "11px",
+              fontWeight: 700,
+              borderRadius: "2px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "4px",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+          >
+            <span>↓</span> <span className="hidden sm:inline">Download</span> PDF
+          </a>
+          <button
+            onClick={() => typeof window !== "undefined" && window.print()}
+            style={{
+              background: "#D71920",
+              color: "#ffffff",
+              border: "none",
+              padding: "6px 14px",
+              fontSize: "11px",
+              fontWeight: 700,
+              cursor: "pointer",
+              borderRadius: "2px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <span>⎙</span> Print
+          </button>
         </div>
       </div>
 
-      <div style={{ padding: "32px 36px 0" }}>
-
-        {/* ════════════════════════════════════════════════════════════════ */}
-        {/* SECTION 2: ALL PRODUCT PICTURES                                 */}
-        {/* ════════════════════════════════════════════════════════════════ */}
-        <div className="pdf-section" style={{ marginBottom: "32px" }}>
-          <SectionHeading num="01" title="Product Pictures" />
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {/* Primary image — larger */}
-            {images[0] && (
-              <div style={{
-                flex: "0 0 calc(60% - 5px)",
-                aspectRatio: "4/3",
-                background: "#F8F8F8",
-                border: "1px solid #EBEBEB",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                position: "relative",
-              }}>
-                <img
-                  src={images[0]}
-                  alt={product.name}
-                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", padding: "16px" }}
-                />
-              </div>
-            )}
-            {/* Secondary images grid */}
-            {images.length > 1 && (
-              <div style={{ flex: "0 0 calc(40% - 5px)", display: "flex", flexDirection: "column", gap: "10px" }}>
-                {images.slice(1, 4).map((img, i) => (
-                  <div key={i} style={{
-                    flex: 1,
-                    background: "#F8F8F8",
-                    border: "1px solid #EBEBEB",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    overflow: "hidden",
-                    minHeight: "80px",
-                  }}>
-                    <img
-                      src={img}
-                      alt={`${product.name} view ${i + 2}`}
-                      style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", padding: "8px" }}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+      <div
+        className="print-brochure-root"
+        style={{
+          width: "100%",
+          maxWidth: "210mm",
+          margin: "0 auto",
+          fontFamily: "var(--font-sans, 'Inter', sans-serif)",
+          background: "#fff",
+          color: "#111",
+          boxSizing: "border-box",
+        }}
+      >
+        {/* ══════════════════════════════════════════════════════════════════ */}
+        {/* SECTION 1: BRANDED HEADER                                         */}
+        {/* ══════════════════════════════════════════════════════════════════ */}
+        <div
+          className="pdf-section pdf-header-pad"
+          style={{
+            background: "#111111",
+            color: "#fff",
+            padding: "24px 28px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "16px",
+          }}
+        >
+          <div>
+            <div style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D71920", marginBottom: "6px" }}>
+              Bushra Impex · X1 Power
+            </div>
+            <div style={{ fontFamily: "var(--font-bebas, 'Bebas Neue', sans-serif)", fontSize: "40px", lineHeight: 0.9, letterSpacing: "0.02em", color: "#fff" }}>
+              {product.name}
+            </div>
+            <div style={{ fontSize: "10px", fontWeight: 700, color: "#888", marginTop: "6px", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              Model: {product.modelCode} · {product.categoryName}
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px" }}>
+            <span style={{ background: "#D71920", color: "#fff", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", padding: "5px 12px" }}>
+              {product.fuelType}
+            </span>
+            <span style={{ fontSize: "8px", color: "#555", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              x1power.in
+            </span>
           </div>
         </div>
+
+        <div className="pdf-content-padding" style={{ padding: "32px 36px 0" }}>
+
+          {/* ════════════════════════════════════════════════════════════════ */}
+          {/* SECTION 2: ALL PRODUCT PICTURES                                 */}
+          {/* ════════════════════════════════════════════════════════════════ */}
+          <div className="pdf-section" style={{ marginBottom: "32px" }}>
+            <SectionHeading num="01" title="Product Pictures" />
+            <div className="pdf-pictures-flex" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+              {/* Primary image — larger */}
+              {images[0] && (
+                <div className="pdf-picture-main" style={{
+                  flex: "0 0 calc(60% - 5px)",
+                  aspectRatio: "4/3",
+                  background: "#F8F8F8",
+                  border: "1px solid #EBEBEB",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                  position: "relative",
+                }}>
+                  <img
+                    src={images[0]}
+                    alt={product.name}
+                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", padding: "16px" }}
+                  />
+                </div>
+              )}
+              {/* Secondary images grid */}
+              {images.length > 1 && (
+                <div className="pdf-picture-thumbs" style={{ flex: "0 0 calc(40% - 5px)", display: "flex", flexDirection: "column", gap: "10px" }}>
+                  {images.slice(1, 4).map((img, i) => (
+                    <div key={i} style={{
+                      flex: 1,
+                      background: "#F8F8F8",
+                      border: "1px solid #EBEBEB",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      overflow: "hidden",
+                      minHeight: "80px",
+                    }}>
+                      <img
+                        src={img}
+                        alt={`${product.name} view ${i + 2}`}
+                        style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", padding: "8px" }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
 
         {/* ════════════════════════════════════════════════════════════════ */}
         {/* SECTION 3: OVERVIEW                                             */}
@@ -309,7 +393,7 @@ export default function PrintBrochure({ product }: { product: Product }) {
             <p style={{ fontSize: "10px", color: "#888", marginBottom: "14px", marginTop: 0 }}>
               Compatible with <strong>{product.modelCode}</strong> as listed in the official X1 Power catalogue.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
+            <div className="pdf-accessories-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "10px", width: "100%", boxSizing: "border-box" }}>
               {product.accessories.map((acc, i) => {
                 const imgSrc = getAccessoryImage(acc, product.accessoryImages);
                 return (
@@ -320,18 +404,48 @@ export default function PrintBrochure({ product }: { product: Product }) {
                       background: "#fff",
                       display: "flex",
                       flexDirection: "column",
+                      minWidth: 0,
+                      width: "100%",
+                      boxSizing: "border-box",
+                      overflow: "hidden",
                     }}
                   >
-                    <div style={{ aspectRatio: "1", background: "#F8F8F8", borderBottom: "1px solid #EBEBEB", display: "flex", alignItems: "center", justifyContent: "center", padding: "8px" }}>
+                    <div
+                      style={{
+                        width: "100%",
+                        aspectRatio: "1 / 1",
+                        position: "relative",
+                        background: "#F8F8F8",
+                        borderBottom: "1px solid #EBEBEB",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "8px",
+                        boxSizing: "border-box",
+                        overflow: "hidden",
+                      }}
+                    >
                       {imgSrc ? (
-                        <img src={imgSrc} alt={acc} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+                        <img
+                          src={imgSrc}
+                          alt={acc}
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            width: "auto",
+                            height: "auto",
+                            objectFit: "contain",
+                            display: "block",
+                            margin: "auto",
+                          }}
+                        />
                       ) : (
                         <span style={{ fontSize: "9px", color: "#bbb", textAlign: "center", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>Image<br />N/A</span>
                       )}
                     </div>
-                    <div style={{ padding: "6px 10px", display: "flex", alignItems: "center", gap: "6px" }}>
-                      <span style={{ width: "5px", height: "5px", background: "#D71920", flexShrink: 0 }} />
-                      <span style={{ fontSize: "10px", fontWeight: 700, color: "#333", textTransform: "uppercase", letterSpacing: "0.06em", lineHeight: 1.3 }}>{acc}</span>
+                    <div style={{ padding: "6px 8px", display: "flex", alignItems: "center", gap: "6px", minWidth: 0, width: "100%", boxSizing: "border-box" }}>
+                      <span style={{ width: "5px", height: "5px", background: "#D71920", flexShrink: 0, borderRadius: "1px" }} />
+                      <span style={{ fontSize: "10px", fontWeight: 700, color: "#333", textTransform: "uppercase", letterSpacing: "0.05em", lineHeight: 1.25, overflowWrap: "break-word", wordBreak: "break-word", minWidth: 0 }}>{acc}</span>
                     </div>
                   </div>
                 );
@@ -397,7 +511,7 @@ export default function PrintBrochure({ product }: { product: Product }) {
       {/* CORPORATE FOOTER                                                  */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <div
-        className="pdf-section"
+        className="pdf-section pdf-footer-pad"
         style={{
           background: "#1a1a1a",
           borderTop: "3px solid #D71920",
@@ -433,5 +547,6 @@ export default function PrintBrochure({ product }: { product: Product }) {
         </div>
       </div>
     </div>
+  </>
   );
 }

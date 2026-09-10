@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | X1 Power — Bushra Impex",
   },
   description:
-    "X1 Power is India's trusted agricultural machinery brand by Bushra Impex (est. 2012, Bengaluru). FMTTI-tested, ISO 9001:2015 certified. Products: power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, rice mills. 500+ dealers across all 29 Indian states.",
+    "X1 Power is India's trusted agricultural machinery brand by Bushra Impex (est. 2012, Bengaluru). FMTTI-tested, ISO 9001:2015 certified. Products: power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, rice mills. 1300+ dealers across all 29 Indian states.",
   keywords: [
     // Brand & entity
     "X1 Power", "Bushra Impex", "X1 Power Bushra Impex", "X1Power India",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "X1 Power by Bushra Impex | Agricultural Machinery India",
     description:
-      "FMTTI-tested, ISO 9001 certified agricultural machinery. Power weeders, chainsaws, sprayers, harvesters & more. 500+ dealers across India.",
+      "FMTTI-tested, ISO 9001 certified agricultural machinery. Power weeders, chainsaws, sprayers, harvesters & more. 1300+ dealers across India.",
     url: "https://bushraimpex.com",
     siteName: "Bushra Impex — X1 Power",
     locale: "en_IN",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "X1 Power by Bushra Impex | Agricultural Machinery India",
     description:
-      "FMTTI-tested, ISO 9001 certified agricultural machinery. 500+ dealers across India.",
+      "FMTTI-tested, ISO 9001 certified agricultural machinery. 1300+ dealers across India.",
     images: ["https://bushraimpex.com/images/bushraimpex-new%20logo.png"],
   },
   icons: {
@@ -123,7 +123,7 @@ const organizationSchema = {
     height: 400,
   },
   description:
-    "Bushra Impex, established in 2012 in Bengaluru, Karnataka, is an Indian manufacturer and distributor of X1 Power agricultural machinery including power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, and rice mills. Products are FMTTI tested and ISO 9001:2015 certified. The company operates 500+ authorised dealers across all 29 Indian states.",
+    "Bushra Impex, established in 2012 in Bengaluru, Karnataka, is an Indian manufacturer and distributor of X1 Power agricultural machinery including power weeders, chainsaws, chaff cutters, wood chippers, crop harvesters, sprayers, water pumps, earth augers, lawn mowers, tea harvesters, pressure washers, and rice mills. Products are FMTTI tested and ISO 9001:2015 certified. The company operates 1300+ authorised dealers across all 29 Indian states.",
   foundingDate: "2012",
   foundingLocation: {
     "@type": "Place",

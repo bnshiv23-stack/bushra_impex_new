@@ -11,17 +11,17 @@ import { ArrowRight, ChevronLeft, ChevronRight, Download, Phone } from "lucide-r
 // â”€â”€ Static data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TRUST_METRICS = [
   { num: "100+", label: "Products" },
-  { num: "500+", label: "Dealers" },
+  { num: "1300+", label: "Dealers" },
   { num: "29", label: "States" },
-  { num: "50,000+", label: "Machines Sold" },
-  { num: "15 Years", label: "Industry Trust" },
-  { num: "ISO", label: "Certified" },
+  { num: "500,000+", label: "Machines Sold" },
+  { num: "15+ Years", label: "Industry Trust" },
+  { num: "ISO & FMTTI", label: "Certified & Trusted" },
 ];
 
 const WHY_FEATURES = [
   { num: "01", title: "Japanese Engine Technology", desc: "Unmatched reliability, smooth startup, and high thermal efficiency for long-hour field usage." },
   { num: "02", title: "Heavy Duty Gearbox", desc: "Reinforced cast-iron housing and hardened alloy gears designed to withstand high torque load." },
-  { num: "03", title: "PAN India Dealer Network", desc: "Over 500+ authorized service centers stocked with original components and trained technicians." },
+  { num: "03", title: "PAN India Dealer Network", desc: "Over 1300+ authorized service centers stocked with original components and trained technicians." },
   { num: "04", title: "Easy Finance Options", desc: "Convenient bank tie-ups and flexible payment terms to ensure premium technology is accessible to all farmers." },
   { num: "05", title: "Low Fuel Consumption", desc: "Optimized carburetor and combustion systems delivering maximum power with reduced fuel overhead per hour." },
   { num: "06", title: "100% Genuine Spare Parts", desc: "Guaranteed availability of wear components, cutting teeth, filters, and gaskets across all authorized service locations." },
@@ -382,10 +382,10 @@ export default function HomePage() {
                 <h2 className="font-bebas text-[clamp(36px,5vw,52px)] text-[var(--text-primary)] leading-none">Our Dealer Network</h2>
               </div>
               <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed max-w-md">
-                With a strong presence across all 29 Indian states and 500+ authorized dealers, X1 Power is always close to your fields. Our dealerships offer certified purchase advice and fast parts procurement.
+                With a strong presence across all 29 Indian states and 1300+ authorized dealers, X1 Power is always close to your fields. Our dealerships offer certified purchase advice and fast parts procurement.
               </p>
               <div className="grid grid-cols-3 gap-4 border-y border-[var(--border-color)] py-5">
-                {[{ num: "500+", label: "Dealers" }, { num: "29", label: "States" }, { num: "100%", label: "Support" }].map((s) => (
+                {[{ num: "1300+", label: "Dealers" }, { num: "29", label: "States" }, { num: "100%", label: "Support" }].map((s) => (
                   <div key={s.label}>
                     <span className="block font-bebas text-[32px] text-[var(--text-primary)] leading-none">{s.num}</span>
                     <span className="text-[9px] text-[#D71920] uppercase font-bold tracking-widest">{s.label}</span>
@@ -409,7 +409,7 @@ export default function HomePage() {
                 { year: "2012", event: "Company Established in Bengaluru" },
                 { year: "2017", event: "Launched X1 Power Brand" },
                 { year: "2021", event: "FMTTI Testing & Approvals Secured" },
-                { year: "2024", event: "PAN India Dealer Network â€” 500+ Strong" },
+                { year: "2024", event: "PAN India Dealer Network — 1300+ Strong" },
               ].map((m) => (
                 <div key={m.year} className="flex items-baseline gap-3">
                   <span className="font-bebas text-[13px] text-[#D71920] tracking-widest w-10 shrink-0">{m.year}</span>
@@ -516,7 +516,7 @@ export default function HomePage() {
               About Bushra Impex & X1 Power
             </h2>
             <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed">
-              Established in 2012 with headquarters in Bengaluru, Karnataka, <strong>Bushra Impex</strong> is one of India's leading wholesalers, importers, and distributors of premium agricultural machinery. In 2016, the company launched its proprietary brand <strong>X1 Power</strong>, dedicated to delivering robust, efficient, and cost-effective farming solutions. Engineered to withstand demanding Indian field conditions, every X1 Power machine passes stringent quality checks, boasts <strong>ISO 9001:2015</strong> certification, and is <strong>FMTTI tested</strong> to ensure subsidy eligibility under state government agricultural programs. Today, Bushra Impex powers nationwide productivity through a robust network of over 500+ authorized dealers.
+              Established in 2012 with headquarters in Bengaluru, Karnataka, <strong>Bushra Impex</strong> is one of India's leading wholesalers, importers, and distributors of premium agricultural machinery. In 2016, the company launched its proprietary brand <strong>X1 Power</strong>, dedicated to delivering robust, efficient, and cost-effective farming solutions. Engineered to withstand demanding Indian field conditions, every X1 Power machine passes stringent quality checks, boasts <strong>ISO 9001:2015</strong> certification, and is <strong>FMTTI tested</strong> to ensure subsidy eligibility under state government agricultural programs. Today, Bushra Impex powers nationwide productivity through a robust network of over 1300+ authorized dealers.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/about" className="text-[11px] font-bold uppercase tracking-widest text-[#D71920] hover:text-[#b01419] flex items-center gap-1 transition-colors">

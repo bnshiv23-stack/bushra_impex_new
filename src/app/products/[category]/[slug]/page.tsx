@@ -158,7 +158,7 @@ function buildFaqItems(product: ReturnType<typeof getProductBySlug>) {
 
   faqs.push({
     q: `Where can I buy the ${product.name} in India?`,
-    a: `The ${product.name} is available through the authorised X1 Power dealer network operated by Bushra Impex, which spans 500+ dealers across all 29 Indian states. Contact Bushra Impex at +91-76248-69606 or visit bushraimpex.com to find your nearest dealer.`,
+    a: `The ${product.name} is available through the authorised X1 Power dealer network operated by Bushra Impex, which spans 1300+ dealers across all 29 Indian states. Contact Bushra Impex at +91-76248-69606 or visit bushraimpex.com to find your nearest dealer.`,
   });
 
   faqs.push({

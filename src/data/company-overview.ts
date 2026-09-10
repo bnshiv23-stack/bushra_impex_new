@@ -50,10 +50,10 @@ export const COMPANY_OVERVIEW = {
     heading: "Bushra Impex at a Glance",
     body: "A brief look at the numbers that define our growth and impact across the agricultural landscape. Every metric represents a farmer supported, a dealer empowered and a community strengthened.",
     kpis: [
-      { value: "12", suffix: "+", title: "Years of Trust", description: "Serving Indian agriculture." },
-      { value: "500", suffix: "+", title: "Dealer Network", description: "Strong presence across 29 states." },
-      { value: "5M", suffix: "+", title: "Farmers Impacted", description: "Empowering agriculture nationwide." },
-      { value: "10", suffix: "+", title: "Product Categories", description: "Comprehensive machinery portfolio." },
+      { value: "15", suffix: "+", title: "Years of Trust", description: "Serving Indian agriculture." },
+      { value: "1300", suffix: "+", title: "Dealer Network", description: "Strong presence across 29 states." },
+      { value: "5L", suffix: "+", title: "Machines Sold", description: "Empowering agriculture nationwide." },
+      { value: "100", suffix: "+", title: "Product SKUs", description: "Comprehensive machinery portfolio." },
       { value: "29", suffix: "", title: "States Covered", description: "A true PAN-India operational footprint." },
       { value: "2", suffix: "", title: "Stock Points", description: "Ensuring timely inventory distribution." },
       { value: "ISO", suffix: "", title: "9001:2015", description: "Quality management certified." },
@@ -143,9 +143,9 @@ export const COMPANY_OVERVIEW = {
     // Image: 7.a is shared / or a separate 9.a if needed
     images: { showroom: "/company-overview/images/9.a.png" },
     metrics: [
-      { value: "TODO", label: "States Covered" },
-      { value: "TODO", label: "Active Dealers" },
-      { value: "TODO", label: "Distribution Hubs" },
+      { value: "29", label: "States Covered" },
+      { value: "1300+", label: "Active Dealers" },
+      { value: "2", label: "Distribution Hubs" },
     ],
     benefits: [
       { icon: "package", title: "Strong Brand Portfolio", description: "Access to 100+ SKUs across 10 product categories with strong market demand." },
