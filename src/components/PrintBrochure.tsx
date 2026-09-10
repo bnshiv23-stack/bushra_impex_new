@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Product, getAccessoryImage } from "@/data/products";
 
@@ -117,6 +118,35 @@ export default function PrintBrochure({ product }: { product: Product }) {
   const images = product.images && product.images.length > 0 ? product.images : (product.image ? [product.image] : []);
   const specEntries = Object.entries(product.specs);
   const applications = getApplications(product);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  async function handleDownloadDirectPDF() {
+    setIsDownloading(true);
+    try {
+      const res = await fetch(`/api/pdf/product?slug=${encodeURIComponent(product.slug)}&category=${encodeURIComponent(product.category)}`);
+      const contentType = res.headers.get("content-type") || "";
+
+      if (res.ok && contentType.includes("application/pdf")) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        return;
+      }
+
+      // Fallback: If server puppeteer rendering is not available, native print/save PDF triggers immediately
+      window.print();
+    } catch {
+      window.print();
+    } finally {
+      setIsDownloading(false);
+    }
+  }
 
   return (
     <>
@@ -160,43 +190,24 @@ export default function PrintBrochure({ product }: { product: Product }) {
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-          <a
-            href={`/api/pdf/product?slug=${product.slug}&category=${product.category}`}
-            download={`X1_${product.modelCode.replace(/[^a-zA-Z0-9_-]/g, "_")}_Brochure.pdf`}
-            style={{
-              background: "#222",
-              color: "#fff",
-              border: "1px solid #444",
-              padding: "6px 12px",
-              fontSize: "11px",
-              fontWeight: 700,
-              borderRadius: "2px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "4px",
-              textDecoration: "none",
-              cursor: "pointer",
-            }}
-          >
-            <span>↓</span> <span className="hidden sm:inline">Download</span> PDF
-          </a>
           <button
             onClick={() => typeof window !== "undefined" && window.print()}
             style={{
               background: "#D71920",
               color: "#ffffff",
               border: "none",
-              padding: "6px 14px",
-              fontSize: "11px",
+              padding: "7px 16px",
+              fontSize: "12px",
               fontWeight: 700,
               cursor: "pointer",
-              borderRadius: "2px",
+              borderRadius: "3px",
               display: "inline-flex",
               alignItems: "center",
-              gap: "5px",
+              gap: "6px",
+              boxShadow: "0 2px 8px rgba(215,25,32,0.4)",
             }}
           >
-            <span>⎙</span> Print
+            <span>⎙</span> Save as PDF / Print
           </button>
         </div>
       </div>

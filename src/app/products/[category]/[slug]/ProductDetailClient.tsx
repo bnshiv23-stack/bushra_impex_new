@@ -184,57 +184,10 @@ export default function ProductDetailClient({
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const tabsSectionRef = useRef<HTMLElement>(null);
 
-  async function handleDownloadBrochure() {
+  function handleDownloadBrochure() {
     if (!product) return;
-    setIsGeneratingPDF(true);
-
-    const safeSlug = product.slug.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filename = `X1_Power_${safeSlug}_Brochure.pdf`;
-    const pdfApiUrl = `/api/pdf/product?slug=${encodeURIComponent(product.slug)}&category=${encodeURIComponent(product.category)}`;
     const printUrl = `/products/${encodeURIComponent(product.category)}/${encodeURIComponent(product.slug)}?print=true`;
-
-    // Check if on iOS / Safari / Chrome iOS
-    const isIOS = typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
-
-    try {
-      // Direct download via Cloudflare API if available
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
-
-      const res = await fetch(pdfApiUrl, { method: "HEAD", signal: controller.signal }).catch(() => null);
-      clearTimeout(timeoutId);
-
-      if (res && res.ok && (res.headers.get("content-type") || "").includes("application/pdf")) {
-        const a = document.createElement("a");
-        a.href = pdfApiUrl;
-        a.download = filename;
-        a.target = "_blank";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setIsGeneratingPDF(false);
-        return;
-      }
-    } catch {
-      // If API check fails, fallback smoothly to the optimized print brochure view
-    }
-
-    // Fallback: open print view (iOS navigates in current tab to prevent popup blocker suppression)
-    if (isIOS) {
-      window.location.href = printUrl;
-    } else {
-      const printWin = window.open(printUrl, "_blank");
-      if (printWin) {
-        printWin.addEventListener("load", () => {
-          setTimeout(() => {
-            printWin.print();
-          }, 600);
-        });
-      } else {
-        window.location.href = printUrl;
-      }
-    }
-    setIsGeneratingPDF(false);
+    window.location.href = printUrl;
   }
   const { add: addToCompare, remove: removeFromCompare, has: isInCompare } = useCompare();
 
